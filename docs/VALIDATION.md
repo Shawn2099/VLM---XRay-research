@@ -1,93 +1,105 @@
 # TrustMed — end-to-end validation
 
-Everything below was run on this machine against the live services on
-2026-11-15. Nothing here is projected; where a number is missing it says so.
+Run on this machine against the live services, 2026-11-15. Nothing below is
+projected; where a number is missing it says so.
 
 ## 1. What is running
 
 | Piece | Where | State |
 |---|---|---|
-| Report service | `10.10.10.28:8000` (MedGemma 1.5 4B active) | healthy, 8.0 GiB VRAM |
-| TrustMed web | `127.0.0.1:8010` (FastAPI, CPU) | healthy |
+| Report service | `10.10.10.28:8000` (MedGemma 1.5 4B) | healthy, 8.0 GiB VRAM |
+| TrustMed | `127.0.0.1:8010`, FastAPI + Jinja, CPU | healthy |
 | Store | `data_trustmed/trustmed.db` (SQLite, WAL) | 8 tables |
-| Verifier | CheXbert 0.0.2 + TorchXRayVision DenseNet-121, CPU | loaded |
+| Verifier | CheXbert 0.0.2 + DenseNet-121 ensemble (3 checkpoints), CPU | loaded |
+| Calibration | `data_trustmed/calibration.json` from 500 OpenI studies | applied |
 
 ## 2. Functional tests
 
-| Suite | Result | Notes |
-|---|---|---|
-| `test/trustmed_e2e.py` | **29/29 pass** | login, upload, generate, read-back, review, invalid action, history, self-tests |
-| `test/trustmed_ingest.py` | **6/6 pass** | DICOM accepted, 16-bit PNG refused, colour photo refused, garbage refused, PNG accepted, hash dedupe |
-| Auth | pass | unauthenticated upload → 401, wrong password → 401, radiologist-only review → 403 for clinicians |
-
-Latency, end-to-end through TrustMed (image already uploaded):
-
-| Run | Latency |
+| Suite | Result |
 |---|---|
-| MedGemma backend | 3.9 – 4.6 s |
-| Breakdown | generation ≈ 3.6 s (remote GPU) · CheXbert ≈ 0.35 s · DenseNet ≈ 0.12 s |
+| `test/trustmed_e2e.py` | **29 / 29** |
+| `test/trustmed_ingest.py` | **6 / 6** |
 
-## 3. Bugs found by the tests, and the fix
+Covered: login, wrong password, unauthenticated upload, upload, DICOM ingest,
+16-bit PNG refusal, colour-photo refusal, garbage refusal, hash dedupe, report
+generation, findings, confidence in range, valid status, read-back, review,
+invalid review action, history, CheXbert self-test, classifier label map.
+
+End-to-end latency: **3.9 – 4.8 s** (generation ≈ 3.6 s on the remote GPU,
+CheXbert ≈ 0.35 s, DenseNet ensemble ≈ 0.35 s).
+
+## 3. Bugs the tests found, and the fix
 
 | # | Symptom | Cause | Fix |
 |---|---|---|---|
-| 1 | only 2 findings per report | CheXbert `classification` returns **0 for "absent"**; the code treated 0 as "not mentioned" and dropped every negative | map `1→present`, `0→absent`, `−1→hedged`, `''→not mentioned` (G5) |
-| 2 | "Atelectasis present" quoted from *"No focal consolidation, atelectasis, or pneumothorax"* | CheXbert mislabels list negations on the full report | negation guard + quote must agree with the label (G9) |
-| 3 | confidence 1.00 on a report with one finding | support-only average | shrink toward 0.5 by evidence coverage |
-| 4 | first report attempt died with a `charmap` error | TorchXRayVision progress bar writes `█` to a cp1252 console | UTF-8 stdout + pre-downloaded weights |
-| 5 | `chex`/`mimic_ch` checkpoints refused to load | those heads return blank names | guard accepts named subsets, still refuses unknown names |
+| 1 | only 2 findings per report | CheXbert returns **0 for "absent"**; code treated 0 as "not mentioned" | `1→present`, `0→absent`, `−1→hedged`, `''→not mentioned` |
+| 2 | "Atelectasis present" quoted from *"No focal consolidation, atelectasis, or pneumothorax"* | CheXbert mislabels list negations | negation guard + quote must agree with its label |
+| 3 | confidence 1.00 on a one-finding report | support-only average | shrink toward 0.5 by evidence coverage |
+| 4 | `charmap` crash on first model load | progress bar writes `█` to cp1252 | UTF-8 stdout + pre-downloaded weights |
+| 5 | `chex` / `mimic_ch` refused to load | their heads return blank names | guard accepts named subsets, still refuses unknown names |
+| 6 | contradictions were 97 % false alarms | Youden thresholds on 3.6 % prevalence | two operating points at 95 % sens / 95 % spec |
+| 7 | `NameError: ingest` on first report | missing import | added |
+| 8 | lateral views were "verified" | no view check | symmetry check; lateral ⇒ verification disabled |
 
-After the fixes the same report yields 8 findings with correct polarity, and the
-UI highlights *"No focal consolidation, atelectasis, or pneumothorax"* as
-**absent/supported** rather than as a positive claim.
+## 4. Verifier gate — 500 OpenI studies
 
-## 4. Verifier gate — the important result
+CheXbert on the reference report is treated as truth. Ensemble = mean of the
+`all`, `chex` and `mimic_ch` DenseNet-121 checkpoints.
 
-500 OpenI studies, CheXbert on the reference report as truth, youden threshold.
-
-| Finding | pos/500 | AUC (all) | AUC (chex) | AUC (mimic_ch) | usable |
+| Finding | pos/500 | AUC | thr (95 % spec) | PPV at thr | tier |
 |---|---|---|---|---|---|
-| Pleural Effusion | 18 | **0.822** | 0.776 | **0.826** | **yes** |
-| Cardiomegaly | 78 | 0.744 | 0.623 | 0.610 | no |
-| Atelectasis | 30 | 0.710 | 0.599 | 0.674 | no |
-| Consolidation | 10 | 0.666 | 0.609 | 0.619 | no |
-| Pneumonia | 6 | 0.636 | 0.610 | 0.711 | no |
-| Lung Opacity | 87 | 0.573 | 0.586 | 0.601 | no |
-| Enlarged Cardiomediastinum | 19 | 0.554 | 0.614 | 0.622 | no |
-| Fracture | 10 | 0.539 | 0.416 | 0.399 | no |
-| Lung Lesion | 22 | 0.533 | 0.478 | 0.466 | no |
-| Pleural Other | 7 | 0.574 | — | — | no |
+| Pleural Effusion | 18 | **0.850** | 0.76 | 0.31 | **verified** |
+| Cardiomegaly | 78 | 0.694 | 0.66 | 0.46 | advisory |
+| Atelectasis | 30 | 0.683 | 0.73 | 0.27 | advisory |
+| Pneumonia | 6 | 0.655 | 0.64 | 0.00 | not assessable (PPV) |
+| Consolidation | 10 | 0.639 | 0.70 | 0.09 | not assessable |
+| Enlarged Cardiomediastinum | 19 | 0.633 | 0.65 | 0.12 | not assessable |
+| Lung Opacity | 87 | 0.596 | 0.84 | 0.30 | not assessable |
+| Pleural Other | 7 | 0.574 | — | — | not assessable |
+| Lung Lesion | 22 | 0.511 | — | — | not assessable |
+| Fracture | 10 | 0.419 | — | — | not assessable |
+| Edema / Pneumothorax | 4 / 2 | — | — | — | too few positives |
 
-**Conclusion: DenseNet-121 cannot verify more than pleural effusion on this
-corpus.** Three pretrained weight sets agree on that.
+Ensemble beats every single checkpoint (effusion 0.822 / 0.776 / 0.826 → 0.850).
 
-Two caveats that cut against the classifier and are worth stating in the report:
+## 5. The lateral-view result (most important)
 
-* our 500-study set contains **lateral views** (square images passed the frontal
-  filter); a lateral image has no meaningful "cardiomegaly" probability;
-* the reference labels come from **terse OpenI reports** (effusion prevalence
-  3.6 %, far below a real chest-radiograph population), so a correct image model
-  is scored as a false positive.
+Half of the "frontal" 500-set is not frontal: the builder accepted square images.
+Mirror-symmetry cleanly separates them (lateral 0019 = 0.15, frontal 0200 = 0.95).
+Recomputing AUC on progressively more symmetric subsets, no model re-run:
 
-Both mean the AUCs above are a **lower bound**, not the model's ceiling.
+| Finding | all 500 | sym>0.4 (309) | sym>0.55 (251) | sym>0.7 (182) |
+|---|---|---|---|---|
+| Pleural Effusion | 0.850 | **0.916** | 0.925 | — |
+| Pneumonia | 0.655 | **0.857** | 0.898 | — |
+| Atelectasis | 0.683 | 0.728 | **0.797** | 0.828 |
+| Cardiomegaly | 0.694 | 0.740 | 0.757 | **0.775** |
+| Enlarged Cardiomediastinum | 0.633 | 0.745 | 0.728 | 0.780 |
+| Lung Opacity | 0.596 | 0.642 | 0.677 | 0.705 |
 
-## 5. Decision taken
+So most of the gate failure was a **data** problem, not only a model problem.
+Caveat, stated rather than hidden: selecting on symmetry preferentially removes
+abnormal images (large effusions are asymmetric), so these subset AUCs are
+optimistic and are *not* used for the shipping calibration.
 
-The system now gates assessability on the measured AUC (`MIN_AUC = 0.75`):
+## 6. What the system does now
 
-* Pleural Effusion → verified;
-* every other finding → `not assessable`, shown grey in the UI and never counted
-  as correct.
+* **Pleural Effusion** — full verdicts (supported / uncertain / unsupported /
+  contradiction).
+* **Cardiomegaly, Atelectasis** — advisory only: may flag extreme disagreement,
+  never clears a finding (PPV 0.46 and 0.27 make clearing unsafe).
+* **Everything else** — `not assessable`, grey, never counted as correct.
+* **Lateral / low-symmetry image** — verification disabled, status
+  `review_required`, reason shown in the UI.
+* **Auto-accept** requires ≥ 3 independently verifiable findings; the current
+  gate never reaches that, so every report is routed to review. That is the
+  honest state, not a bug.
 
-This is deliberately smaller than the report's promise and larger than nothing:
-one finding is verified with real evidence, and the system says so instead of
-pretending.
-
-## 6. Still open
+## 7. Still open
 
 | Item | Status |
 |---|---|
-| Finding-level risk–coverage on the generated reports | running (`trustmed/eval/verifier_value.py`) |
-| Lateral-view filter for the 500 set | not done; would raise every AUC |
-| Second image model (BiomedCLIP zero-shot) | not tried; only remaining path to verifying more findings |
+| Rebuild the 500-set frontal-only and re-run both models | not done (≈ 1 h GPU + metrics) |
+| Verifier-value analysis on generated reports | script ready, needs a run after the rebuild |
 | Reader study | not started |
+| Second image model (BiomedCLIP zero-shot) | untried; only remaining route to widening the verified set |

@@ -153,7 +153,25 @@ def decode(raw: bytes, filename: str) -> tuple[Image.Image, dict]:
     else:
         image, meta = _plain(raw)
     meta.update({"width": image.width, "height": image.height, "bytes": len(raw)})
+    meta.update(view_check(image))
     return image, meta
+
+
+def symmetry(image: Image.Image) -> float:
+    """Correlation with the horizontal mirror: frontals high, laterals low."""
+    array = np.asarray(image.convert("L").resize((224, 224)), dtype=np.float32)
+    array = (array - array.mean()) / (array.std() + 1e-6)
+    return round(float((array * array[:, ::-1]).mean()), 3)
+
+
+def view_check(image: Image.Image) -> dict:
+    score = symmetry(image)
+    return {
+        "symmetry": score,
+        # 0.4 is deliberately conservative: it keeps ~60 % of OpenI and drops the
+        # images where an AP/PA projection cannot be assumed.
+        "view": "frontal" if score >= 0.4 else "likely_lateral",
+    }
 
 
 def store(raw: bytes, filename: str, content_type: str) -> dict:

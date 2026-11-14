@@ -6,7 +6,7 @@ import hashlib
 import json
 
 from .. import config, db
-from . import classifier, confidence, findings, generator, verdict
+from . import classifier, confidence, findings, generator, ingest, verdict
 
 
 class UnknownImage(LookupError):
@@ -28,8 +28,25 @@ def analyze(image_id: str, user_id: int | None, threshold: float) -> dict:
     probs = classifier.predict(image["gray_path"])
     rows = verdict.apply(extracted, probs)
 
+    meta = json.loads(image["meta_json"] or "{}")
+    if "view" not in meta:
+        from PIL import Image as PILImage
+
+        with PILImage.open(image["gray_path"]) as stored_image:
+            meta.update(ingest.view_check(stored_image))
+    view = meta.get("view", "unknown")
+    if view == "likely_lateral":
+        # A lateral projection cannot be verified by a frontal-trained model:
+        # refuse rather than emit meaningless probabilities.
+        for row in rows:
+            row["verdict"] = "not_assessable"
+            row["image_prob"] = None
+            row["reason"] = "image looks lateral; frontal verification disabled"
+
     confidence_value = confidence.score(rows)
     status = confidence.status(confidence_value, rows, threshold)
+    if view == "likely_lateral":
+        status = "review_required"
 
     report_id = db.execute(
         "INSERT INTO reports (image_id, user_id, model, model_version, prompt_hash, temperature, "
@@ -80,6 +97,8 @@ def analyze(image_id: str, user_id: int | None, threshold: float) -> dict:
         "confidence": confidence_value,
         "latency_ms": latency_ms,
         "model": config.BACKEND_NAME,
+        "view": view,
+        "symmetry": meta.get("symmetry"),
         "findings": rows,
         "probabilities": probs,
     }

@@ -32,7 +32,9 @@ VERIFIABLE = set(classifier.XRV_TO_CHEXBERT.values()) - classifier.NOT_ASSESSABL
 
 # minimum per-finding AUC for a label to be assessed at all (guardrail G2)
 MIN_AUC = 0.75
+MIN_PPV = 0.25               # a flag that is nearly always wrong is worse than no flag
 ADVISORY_AUC = 0.65          # flag-only tier: may raise suspicion, may never clear
+ADVISORY_PPV = 0.20
 ADVISORY_LOW = 0.10
 ADVISORY_HIGH = 0.90
 
@@ -60,9 +62,11 @@ def gate() -> tuple[set[str], set[str]]:
         if label not in VERIFIABLE:
             continue
         auc = stats.get("auc") or 0.0
-        if auc >= MIN_AUC:
+        ppv = stats.get("ppv_at_pos")
+        ppv = 1.0 if ppv is None else float(ppv)
+        if auc >= MIN_AUC and ppv >= MIN_PPV:
             full.add(label)
-        elif auc >= ADVISORY_AUC:
+        elif auc >= ADVISORY_AUC and ppv >= ADVISORY_PPV:
             advisory.add(label)
     if not full and not advisory:
         return set(VERIFIABLE), set()
