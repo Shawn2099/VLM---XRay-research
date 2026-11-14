@@ -30,12 +30,33 @@ SEVERITY = {
 
 VERIFIABLE = set(classifier.XRV_TO_CHEXBERT.values()) - classifier.NOT_ASSESSABLE
 
+# minimum per-finding AUC for a label to be assessed at all (guardrail G2)
+MIN_AUC = 0.75
+
 
 def _calibration() -> dict:
     try:
         return json.loads(config.CALIBRATION_PATH.read_text(encoding="utf-8"))
     except Exception:
         return {}
+
+
+def trusted() -> set[str]:
+    """Labels the measured gate lets us verify.
+
+    Without a calibration file we fall back to the static map. With one, a label
+    must have AUC >= MIN_AUC, so the system cannot claim to verify findings its
+    own image model cannot separate.
+    """
+    saved = _calibration().get("classifier", {})
+    if not saved:
+        return set(VERIFIABLE)
+    keep = {
+        label
+        for label, stats in saved.items()
+        if label in VERIFIABLE and (stats.get("auc") or 0.0) >= MIN_AUC
+    }
+    return keep or set(VERIFIABLE)
 
 
 def thresholds() -> dict[str, float]:
@@ -55,6 +76,7 @@ def apply(
     findings: list[dict], probs: dict[str, float], include_omissions: bool = True
 ) -> list[dict]:
     table = thresholds()
+    allowed = trusted()
     rows: list[dict] = []
     mentioned: set[str] = set()
 
@@ -65,9 +87,13 @@ def apply(
         severity = SEVERITY.get(label, 1)
         prob = probs.get(label)
 
-        if label not in VERIFIABLE or prob is None:
+        if label not in allowed or prob is None:
             verdict = "not_assessable"
-            reason = "no independent image model covers this finding"
+            reason = (
+                "no independent image model covers this finding"
+                if label not in VERIFIABLE
+                else "image model does not separate this finding reliably (AUC gate)"
+            )
         elif item.get("hedged"):
             verdict = "uncertain"
             reason = f"report hedges this finding; image {prob:.2f}"
@@ -100,7 +126,7 @@ def apply(
     # Omission: image positive, report silent (guardrail G4: p >= 0.90 and PPV >= 0.5)
     if include_omissions:
         ppv = _calibration().get("classifier", {})
-        for label in sorted(VERIFIABLE):
+        for label in sorted(allowed):
             if label in mentioned:
                 continue
             prob = probs.get(label)

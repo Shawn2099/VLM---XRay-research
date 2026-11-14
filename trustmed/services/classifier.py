@@ -69,11 +69,18 @@ def _load():
             import torchxrayvision as xrv
 
             model = xrv.models.DenseNet(weights=config.DENSENET_WEIGHTS).eval()
-            found = list(model.pathologies)
-            if found != EXPECTED_XRV:
+            found = [p for p in model.pathologies if p]
+            unknown = [p for p in found if p not in EXPECTED_XRV]
+            mapped = [p for p in found if p in XRV_TO_CHEXBERT]
+            if unknown:
                 raise RuntimeError(
-                    "TorchXRayVision label order changed; refusing to guess.\n"
-                    f"expected: {EXPECTED_XRV}\nfound:    {found}"
+                    "TorchXRayVision returned labels this build does not know; "
+                    f"refusing to guess: {unknown}"
+                )
+            if len(mapped) < 4:
+                raise RuntimeError(
+                    f"{config.DENSENET_WEIGHTS} exposes only {mapped}; "
+                    "not enough overlapping findings to verify anything"
                 )
             _model = (model, torch)
     return _model
