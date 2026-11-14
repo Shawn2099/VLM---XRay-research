@@ -49,3 +49,7 @@ icccserver-IR-*/
 *.log
 .DS_Store
 Thumbs.db
+
+# local scratch
+last_report.json
+fresh.json

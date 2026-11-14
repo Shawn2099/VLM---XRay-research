@@ -229,7 +229,13 @@ function renderStatus(){
   $('scoreN').textContent = s.toFixed(2);
   $('scoreBar').style.width = (s*100) + '%';
   $('thrTick').style.left = (t*100) + '%';
-  $('meta').textContent = `Model ${data.model} · end-to-end ${data.latency_ms} ms · threshold ${t.toFixed(2)} · confidence is derived from verdicts, not from the generator.`;
+  const total = data.findings.length;
+  const na = data.findings.filter(f => f.verdict === 'not_assessable').length;
+  const flags = data.findings.filter(f => ['unsupported','contradiction','omission'].includes(f.verdict)).length;
+  $('meta').textContent =
+    `Model ${data.model} · end-to-end ${data.latency_ms} ms · threshold ${t.toFixed(2)} · `
+    + `${total - na}/${total} findings independently verifiable, ${na} not assessable, ${flags} flagged. `
+    + `Confidence is derived from verdicts, not from the generator.`;
 }
 
 function esc(s){ return (s||'').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
