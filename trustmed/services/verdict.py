@@ -68,6 +68,9 @@ def apply(
         if label not in VERIFIABLE or prob is None:
             verdict = "not_assessable"
             reason = "no independent image model covers this finding"
+        elif item.get("hedged"):
+            verdict = "uncertain"
+            reason = f"report hedges this finding; image {prob:.2f}"
         else:
             cut = _cut(label, table)
             if polarity > 0:

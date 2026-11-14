@@ -108,15 +108,27 @@ def _mention_negated(sentence: str, pattern: re.Pattern) -> bool:
     return bool(NEG_CUE.search(sentence[: match.start()]))
 
 
-def extract(text: str) -> list[dict]:
-    """Return [{label, polarity, sentence, span_start, span_end, corrected}] for mentioned labels.
+def _agree(local_value, polarity: int) -> bool:
+    """Does a sentence's own CheXbert label match the report-level polarity?"""
+    if local_value in ("", None):
+        return False
+    value = int(local_value)
+    return value != 0 if polarity > 0 else value == 0
 
-    Two guardrails on top of raw CheXbert (G9):
+
+def extract(text: str) -> list[dict]:
+    """Return one row per *mentioned* finding.
+
+    CheXbert classification states are preserved (guardrail G5):
+      raw 1  -> polarity +1  (present)
+      raw 0  -> polarity -1  (explicitly absent)
+      raw -1 -> polarity +1, hedged=True  ("cannot exclude ...")
+      raw '' -> not mentioned, and therefore not returned at all.
+
+    Two guardrails on top (G9):
       * a positive label every one of whose mentions is negated is flipped to negative
-        (CheXbert mislabels list negations, e.g. "no consolidation, atelectasis, or
-        pneumothorax");
-      * the quoted sentence must be one whose own labels agree with the report label,
-        otherwise no quote is shown rather than a contradictory one.
+        (CheXbert mislabels list negations: "no consolidation, atelectasis, or pneumothorax");
+      * the quoted sentence must itself be labelled the same way, otherwise no quote.
     """
     vector = _label_vector(text)
     sentences = split_sentences(text)
@@ -124,35 +136,41 @@ def extract(text: str) -> list[dict]:
     findings: list[dict] = []
     for index, label in enumerate(CHEXBERT_LABELS):
         raw = vector[index] if index < len(vector) else ""
-        polarity = 0 if raw in ("", None) else int(raw)
-        if polarity == 0:
-            continue                      # not mentioned: G5, not "absent"
+        if raw in ("", None):
+            continue                      # not mentioned is not "absent"
+
+        value = int(raw)
+        hedged = value == -1
+        polarity = -1 if value == 0 else 1
 
         pattern = re.compile(LEXICON.get(label, ""), re.IGNORECASE)
         candidates = [s for s in sentences if pattern.search(s[0])]
 
         corrected = False
-        if polarity > 0 and candidates and all(_mention_negated(s[0], pattern) for s in candidates):
+        if polarity > 0 and not hedged and candidates and all(
+            _mention_negated(s[0], pattern) for s in candidates
+        ):
             polarity = -1                 # negation guard
             corrected = True
 
         quote = ("", -1, -1)
-        for sentence, start, end in candidates:
-            local = _sentence_vector(sentence)
-            if index < len(local) and local[index] not in ("", None) and int(local[index]) == polarity:
-                quote = (sentence, start, end)
-                break
-        if not quote[0] and candidates:
-            # no sentence agrees: show the first non-contradictory one, or nothing
+        if label != "No Finding":         # report-level label, not a sentence
             for sentence, start, end in candidates:
-                if _mention_negated(sentence, pattern) == (polarity < 0):
+                local = _sentence_vector(sentence)
+                if index < len(local) and _agree(local[index], polarity):
                     quote = (sentence, start, end)
                     break
+            if not quote[0] and candidates:
+                for sentence, start, end in candidates:
+                    if _mention_negated(sentence, pattern) == (polarity < 0):
+                        quote = (sentence, start, end)
+                        break
 
         findings.append(
             {
                 "label": label,
                 "polarity": polarity,
+                "hedged": hedged,
                 "sentence": quote[0],
                 "span_start": quote[1],
                 "span_end": quote[2],
@@ -163,13 +181,21 @@ def extract(text: str) -> list[dict]:
 
 
 def self_test() -> dict:
-    """Guardrail G1: label order and polarity on a fixture report."""
+    """Guardrail G1/G5/G9: label order, four states, negation correction."""
     text = "The heart is enlarged. There is a small left pleural effusion. No pneumothorax."
-    rows = {row["label"]: row["polarity"] for row in extract(text)}
+    rows = {row["label"]: row for row in extract(text)}
     checks = {
-        "Cardiomegaly": rows.get("Cardiomegaly") == 1,
-        "Pleural Effusion": rows.get("Pleural Effusion") == 1,
-        "Pneumothorax": rows.get("Pneumothorax") == -1,
-        "Atelectasis": rows.get("Atelectasis") in (None, 0),
+        "Cardiomegaly positive": rows.get("Cardiomegaly", {}).get("polarity") == 1,
+        "Pleural Effusion positive": rows.get("Pleural Effusion", {}).get("polarity") == 1,
+        "Pneumothorax negative": rows.get("Pneumothorax", {}).get("polarity") == -1,
+        "Atelectasis not mentioned": "Atelectasis" not in rows,
     }
-    return {"ok": all(checks.values()), "checks": checks, "rows": rows}
+    negation = {
+        row["label"]: row
+        for row in extract("No focal consolidation, atelectasis, or pneumothorax is identified.")
+    }
+    checks["list negation corrected"] = all(
+        negation.get(label, {}).get("polarity") == -1
+        for label in ("Atelectasis", "Pneumothorax")
+    )
+    return {"ok": all(checks.values()), "checks": checks}

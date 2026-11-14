@@ -44,6 +44,7 @@ def _isotonic(value: float, knots: list[list[float]]) -> float:
 def score(rows: list[dict]) -> float:
     total = 0.0
     weight = 0.0
+    evidence = 0.0
     for row in rows:
         value = SUPPORT_VALUE.get(row["verdict"])
         if value is None:
@@ -52,13 +53,15 @@ def score(rows: list[dict]) -> float:
         row_weight = severity * (OMISSION_WEIGHT if row["verdict"] == "omission" else 1.0)
         total += value * row_weight
         weight += row_weight
+        evidence += severity
 
     if weight == 0:
-        # nothing verifiable: do not pretend to be confident
-        raw = 0.30
-    else:
-        raw = total / weight
+        return 0.30     # nothing verifiable: do not pretend to be confident
 
+    raw = total / weight
+    # thin evidence must not read as certainty (a 1-finding report is not 1.0)
+    coverage = min(1.0, evidence / 8.0)
+    raw = 0.5 + (raw - 0.5) * coverage
     return round(max(0.0, min(1.0, _isotonic(raw, _knots()))), 3)
 
 

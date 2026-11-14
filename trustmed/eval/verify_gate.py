@@ -1,8 +1,8 @@
-"""Verifier gate: does DenseNet-121 actually predict the reference findings?
+﻿"""Verifier gate: does DenseNet-121 actually predict the reference findings?
 
 For every OpenI-500 study we compare DenseNet's image probabilities with CheXbert
 labels taken from the *reference* radiology report. That gives a per-finding AUC,
-a Youden threshold, sensitivity/specificity and PPV — the numbers the verdict
+a Youden threshold, sensitivity/specificity and PPV â€” the numbers the verdict
 engine needs, and the evidence for guardrails G2/G3/G4.
 
 Writes data_trustmed/calibration.json (thresholds + PPV) and docs/VERIFIER_GATE.md.
@@ -57,7 +57,13 @@ def youden_threshold(y_true: list[int], scores: list[float]) -> tuple[float, flo
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--limit", type=int, default=0)
+    parser.add_argument("--weights", default=config.DENSENET_WEIGHTS,
+                        help="TorchXRayVision weight set, e.g. densenet121-res224-chex")
+    parser.add_argument("--out", default="", help="calibration output path")
     args = parser.parse_args()
+
+    config.DENSENET_WEIGHTS = args.weights
+    out_path = pathlib.Path(args.out) if args.out else config.CALIBRATION_PATH
 
     records = [
         json.loads(line)
@@ -114,10 +120,12 @@ def main() -> None:
         "generated_at": db.now(),
         "n_studies": len(records),
         "corpus": "openi500",
+        "weights": args.weights,
         "classifier": summary,
         "confidence": {"knots": []},
     }
-    config.CALIBRATION_PATH.write_text(json.dumps(payload, indent=2), encoding="utf-8")
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    out_path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
 
     rows = [
         "| Finding | pos/n | AUC | threshold | sens | spec | PPV | trusted |",
@@ -125,7 +133,7 @@ def main() -> None:
     ]
     for label, s in summary.items():
         if s["auc"] is None:
-            rows.append(f"| {label} | {s['positives']}/{s['n']} | — | {s['threshold']} | — | — | — | no |")
+            rows.append(f"| {label} | {s['positives']}/{s['n']} | â€” | {s['threshold']} | â€” | â€” | â€” | no |")
         else:
             rows.append(
                 f"| {label} | {s['positives']}/{s['n']} | {s['auc']:.3f} | {s['threshold']:.2f} | "
@@ -135,7 +143,7 @@ def main() -> None:
 
     trusted = [label for label, s in summary.items() if s.get("trusted")]
     header = [
-        "# Verifier gate — DenseNet-121 vs CheXbert on the reference report",
+        "# Verifier gate â€” DenseNet-121 vs CheXbert on the reference report",
         "",
         f"* studies: {len(records)} (OpenI-500)",
         f"* corpus: `test/data/openi500`",
@@ -149,7 +157,7 @@ def main() -> None:
 
     print("\n".join(rows))
     print(f"\ntrusted: {trusted}")
-    print(f"wrote {config.CALIBRATION_PATH} and {OUT_MD}")
+    print(f"wrote {out_path} and {OUT_MD}")
 
 
 if __name__ == "__main__":
