@@ -61,10 +61,11 @@ def operating_points(y_true: list[int], scores: list[float]) -> dict:
     fpr, tpr, thresholds = roc_curve(y_true, scores)
     spec = 1.0 - fpr
 
-    high = [i for i in range(len(thresholds)) if spec[i] >= 0.95]
-    low = [i for i in range(len(thresholds)) if tpr[i] >= 0.95]
-    t_pos = float(thresholds[high[0]]) if high else 1.01
-    t_neg = float(thresholds[low[-1]]) if low else -0.01
+    # thresholds descend, spec descends, tpr ascends.
+    high = [i for i in range(len(thresholds)) if spec[i] >= 0.95 and np.isfinite(thresholds[i])]
+    low = [i for i in range(len(thresholds)) if tpr[i] >= 0.95 and np.isfinite(thresholds[i])]
+    t_pos = float(thresholds[high[-1]]) if high else 1.0
+    t_neg = float(thresholds[low[0]]) if low else 0.0
 
     def at(threshold: float) -> tuple[float, float, float]:
         tp = sum(1 for yy, pp in zip(y_true, scores) if yy == 1 and pp >= threshold)
@@ -94,6 +95,8 @@ def main() -> None:
     parser.add_argument("--out", default="", help="calibration output path")
     parser.add_argument("--min-symmetry", type=float, default=-1.0,
                         help="drop images whose mirror correlation is below this (lateral filter)")
+    parser.add_argument("--dump-probs", default="",
+                        help="write raw probabilities so thresholds can be recomputed offline")
     args = parser.parse_args()
 
     config.DENSENET_WEIGHTS = args.weights
@@ -116,10 +119,12 @@ def main() -> None:
 
     wanted = set(classifier.XRV_TO_CHEXBERT.values())
     per_label: dict[str, dict[str, list]] = defaultdict(lambda: {"y": [], "p": []})
+    dump: dict[str, dict] = {}
 
     for index, record in enumerate(records, 1):
         labels = reference_labels(record["findings"], wanted)
         probs = classifier.predict(str(DATA / record["file"]))
+        dump[record["id"]] = {"labels": labels, "probs": probs}
         for label, prob in probs.items():
             if label not in labels:
                 continue
@@ -127,6 +132,10 @@ def main() -> None:
             per_label[label]["p"].append(prob)
         if index % 50 == 0:
             print(f"  {index}/{len(records)}", flush=True)
+
+    if args.dump_probs:
+        pathlib.Path(args.dump_probs).write_text(json.dumps(dump), encoding="utf-8")
+        print(f"probs -> {args.dump_probs}")
 
     summary = {}
     for label, data in sorted(per_label.items()):

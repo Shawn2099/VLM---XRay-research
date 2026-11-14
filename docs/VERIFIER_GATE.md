@@ -8,14 +8,15 @@
 
 | Finding | pos/n | AUC | threshold | sens | spec | PPV | trusted |
 |---|---|---|---|---|---|---|---|
-| Atelectasis | 30/500 | 0.674 | 0.77 | 0.40 | 0.90 | 0.18 | no |
-| Cardiomegaly | 78/500 | 0.610 | 0.69 | 0.56 | 0.60 | 0.20 | no |
-| Consolidation | 10/500 | 0.619 | 0.54 | 0.50 | 0.79 | 0.05 | no |
+| Atelectasis | 30/500 | 0.683 | inf | 0.00 | 1.00 | 0.00 | no |
+| Cardiomegaly | 78/500 | 0.694 | inf | 0.00 | 1.00 | 0.00 | no |
+| Consolidation | 10/500 | 0.639 | inf | 0.00 | 1.00 | 0.00 | no |
 | Edema | 4/500 | â€” | 0.7 | â€” | â€” | â€” | no |
-| Enlarged Cardiomediastinum | 19/500 | 0.622 | 0.52 | 0.79 | 0.43 | 0.05 | no |
-| Fracture | 10/500 | 0.399 | 0.07 | 1.00 | 0.04 | 0.02 | no |
-| Lung Lesion | 22/500 | 0.466 | 0.12 | 0.95 | 0.11 | 0.04 | no |
-| Lung Opacity | 87/500 | 0.601 | 0.55 | 0.78 | 0.43 | 0.22 | no |
-| Pleural Effusion | 18/500 | 0.826 | 0.64 | 0.94 | 0.63 | 0.09 | yes |
-| Pneumonia | 6/500 | 0.711 | 0.52 | 1.00 | 0.58 | 0.03 | no |
+| Enlarged Cardiomediastinum | 19/500 | 0.633 | inf | 0.00 | 1.00 | 0.00 | no |
+| Fracture | 10/500 | 0.419 | inf | 0.00 | 1.00 | 0.00 | no |
+| Lung Lesion | 22/500 | 0.511 | inf | 0.00 | 1.00 | 0.00 | no |
+| Lung Opacity | 87/500 | 0.596 | inf | 0.00 | 1.00 | 0.00 | no |
+| Pleural Effusion | 18/500 | 0.850 | inf | 0.00 | 1.00 | 0.00 | yes |
+| Pleural Other | 7/500 | 0.574 | inf | 0.00 | 1.00 | 0.00 | no |
+| Pneumonia | 6/500 | 0.655 | inf | 0.00 | 1.00 | 0.00 | no |
 | Pneumothorax | 2/500 | â€” | 0.7 | â€” | â€” | â€” | no |

@@ -26,6 +26,13 @@ DenseNet-121 (image → 12 probs)              CheXbert (report → 14 labels + 
 .\medgemma\switch.ps1 -Model medgemma      # or -Model cxr
 
 # 2. TrustMed
+.\trustmed\run.ps1                         # http://127.0.0.1:8010
+.\trustmed\run.ps1 -Name cxr               # same, labelled for CXR-LLaVA
+```
+
+Equivalent manual start:
+
+```powershell
 $env:PYTHONPATH="."
 $env:TRUSTMED_API_KEY="<key from deploy/api.key>"
 $env:TRUSTMED_BACKEND_NAME="medgemma"
