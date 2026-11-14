@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TrustMed</title>
+<style>
+:root{
+  --paper:#f4f6f6; --card:#ffffff; --ink:#16212a; --muted:#5b6b76; --line:#d9e0e3;
+  --film:#0e1419; --film-ink:#c9d3d9;
+  --teal:#0e6f73; --teal-soft:#dff0f0;
+  --ok:#216b45; --ok-soft:#e1f2e8;
+  --warn:#9a5b00; --warn-soft:#fdf0d8; --warn-line:#e0a23a;
+  --bad:#8a1f1f; --bad-soft:#fbe4e4;
+  --font:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+  --serif:Georgia,"Times New Roman",serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.5 var(--font)}
+header{display:flex;align-items:baseline;gap:14px;padding:14px 28px;background:var(--film);color:#fff}
+header h1{margin:0;font:600 22px var(--font);letter-spacing:.2px}
+header span{color:var(--film-ink);font-size:13px}
+header .who{margin-left:auto;font-size:13px;color:var(--film-ink)}
+header .who a{color:#fff;text-decoration:none;border-bottom:1px solid #ffffff55}
+.notice{background:var(--warn-soft);border-bottom:1px solid var(--warn-line);color:var(--warn);padding:7px 28px;font-size:13px}
+main{display:grid;grid-template-columns:330px 1fr;gap:24px;padding:24px 28px;max-width:1220px;margin:0 auto}
+@media(max-width:900px){main{grid-template-columns:1fr}}
+aside>section,.panel{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:16px}
+aside>section+section{margin-top:16px}
+h2{margin:0 0 10px;font:600 15px var(--font)}
+.drop{display:block;border:2px dashed #9fb3bb;border-radius:6px;padding:26px 12px;text-align:center;cursor:pointer;color:var(--muted);transition:background .15s,border-color .15s}
+.drop:hover,.drop.over,.drop:focus-within{background:var(--teal-soft);border-color:var(--teal)}
+.drop input{position:absolute;opacity:0;width:1px;height:1px}
+.drop strong{display:block;color:var(--ink)}
+.fname{margin-top:8px;font-size:13px;color:var(--muted);word-break:break-all}
+button.primary{margin-top:12px;width:100%;padding:10px;border:0;border-radius:5px;background:var(--teal);color:#fff;font:600 15px var(--font);cursor:pointer}
+button.primary:disabled{background:#9db8ba;cursor:not-allowed}
+button:focus-visible,input:focus-visible{outline:3px solid #6bb6ba;outline-offset:2px}
+.err{margin-top:10px;padding:8px 10px;border-radius:5px;background:var(--bad-soft);color:var(--bad);font-size:13.5px}
+.range-row{display:flex;justify-content:space-between;font-size:13px;color:var(--muted)}
+input[type=range]{width:100%;accent-color:var(--teal)}
+.hint{font-size:12.5px;color:var(--muted);margin:6px 0 0}
+ul.steps{list-style:none;margin:0;padding:0}
+ul.steps li{display:flex;justify-content:space-between;gap:8px;padding:6px 0;border-top:1px solid var(--line);font-size:13.5px}
+ul.steps li:first-child{border-top:0}
+.tag{font-size:12px;padding:1px 7px;border-radius:10px;white-space:nowrap}
+.tag.real{background:var(--ok-soft);color:var(--ok)}
+.tag.sim{background:var(--warn-soft);color:var(--warn)}
+.empty{color:var(--muted);padding:40px 10px;text-align:center}
+.viewers{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:560px){.viewers{grid-template-columns:1fr}}
+figure{margin:0;background:var(--film);border-radius:6px;overflow:hidden}
+figure img{display:block;width:100%;aspect-ratio:1;object-fit:contain;background:#000}
+figcaption{color:var(--film-ink);font-size:13px;padding:8px 12px}
+.result{margin-top:16px}
+.top{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-bottom:12px}
+.badge{padding:6px 14px;border-radius:5px;font:600 15px var(--font);border:1px solid}
+.badge.ok{background:var(--ok-soft);color:var(--ok);border-color:#9fd0b5}
+.badge.warn{background:var(--warn-soft);color:var(--warn);border-color:var(--warn-line)}
+.badge.bad{background:var(--bad-soft);color:var(--bad);border-color:#e5a8a8}
+.score{display:flex;align-items:center;gap:10px;min-width:240px;flex:1}
+.score b{font-size:22px;min-width:3.4ch}
+.bar{position:relative;flex:1;height:10px;background:#e6ecee;border-radius:5px}
+.bar i{position:absolute;inset:0 auto 0 0;border-radius:5px;background:var(--teal)}
+.bar u{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--ink);text-decoration:none}
+.report{font:17px/1.8 var(--serif);margin:0;padding:0;white-space:pre-wrap}
+.s{padding:1px 3px;border-radius:3px;cursor:help}
+.s.ok{background:var(--ok-soft);box-shadow:inset 0 -2px 0 #9fd0b5}
+.s.uncertain{background:var(--warn-soft);box-shadow:inset 0 -2px 0 var(--warn-line)}
+.s.bad{background:var(--bad-soft);box-shadow:inset 0 -2px 0 #c44}
+.s.grey{background:#eef1f2;color:var(--muted)}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12.5px;color:var(--muted);margin-top:10px}
+.legend span::before{content:"";display:inline-block;width:12px;height:8px;margin-right:6px;border-radius:2px;vertical-align:middle}
+.legend .a::before{background:var(--ok-soft);box-shadow:inset 0 -2px 0 #9fd0b5}
+.legend .b::before{background:var(--warn-soft);box-shadow:inset 0 -2px 0 var(--warn-line)}
+.legend .c::before{background:var(--bad-soft);box-shadow:inset 0 -2px 0 #c44}
+.meta{font-size:12.5px;color:var(--muted);margin-top:12px;border-top:1px solid var(--line);padding-top:10px}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th,td{text-align:left;padding:6px 8px;border-top:1px solid var(--line);vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:12.5px}
+.pill{font-size:12px;padding:1px 8px;border-radius:10px;white-space:nowrap}
+.pill.supported{background:var(--ok-soft);color:var(--ok)}
+.pill.uncertain{background:var(--warn-soft);color:var(--warn)}
+.pill.unsupported,.pill.contradiction{background:var(--bad-soft);color:var(--bad)}
+.pill.omission{background:var(--bad-soft);color:var(--bad)}
+.pill.not_assessable{background:#eef1f2;color:var(--muted)}
+.mini{font-size:12px;padding:3px 7px;border-radius:4px;border:1px solid var(--line);background:#fff;cursor:pointer}
+.mini:hover{background:var(--teal-soft);border-color:var(--teal)}
+.spin{display:inline-block;width:14px;height:14px;border:2px solid #fff6;border-top-color:#fff;border-radius:50%;vertical-align:-2px;margin-right:8px;animation:r .8s linear infinite}
+@keyframes r{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.spin{animation:none}}
+</style>
+</head>
+<body>
+<header>
+  <h1>TrustMed</h1>
+  <span>Radiology report generation with automatic verification and confidence scoring</span>
+  <span class="who">{{ user.email }} · {{ user.role }}{% if user.is_admin %} · admin{% endif %}
+    &nbsp;·&nbsp;<a href="/history">history</a>
+    &nbsp;·&nbsp;<form method="post" action="/auth/logout" style="display:inline"><button class="mini">sign out</button></form>
+  </span>
+</header>
+<div class="notice" role="note">
+  AI-assisted draft for decision support only. Not a diagnosis. Every finding marked
+  “unsupported”, “contradiction” or “omission” needs a radiologist’s review.
+</div>
+
+<main>
+<aside>
+  <section>
+    <h2>Upload chest X-ray</h2>
+    <label class="drop" id="drop">
+      <input type="file" id="file" accept=".jpg,.jpeg,.png,.dcm,.dicom,image/jpeg,image/png,application/dicom">
+      <strong>Choose or drop an image</strong>JPEG, PNG or DICOM &middot; up to 40 MB
+    </label>
+    <div class="fname" id="fname">No file selected</div>
+    <div class="err" id="err" role="alert" hidden></div>
+    <button class="primary" id="go" disabled>Generate report</button>
+  </section>
+
+  <section>
+    <h2>Review threshold</h2>
+    <input type="range" id="thr" min="0.30" max="0.95" step="0.01" value="{{ threshold }}" aria-label="Review threshold">
+    <div class="range-row"><span>Flag more</span><b id="thrv">{{ threshold }}</b><span>Flag fewer</span></div>
+    <p class="hint">Reports below this confidence are marked review required. Drag after a report to re-score the status.</p>
+  </section>
+
+  <section>
+    <h2>Pipeline</h2>
+    <ul class="steps" id="steps">
+      <li><span>Ingest &amp; DICOM window</span><span class="tag real">ready</span></li>
+      <li><span>Report generation · {{ backend }}</span><span class="tag real">real</span></li>
+      <li><span>CheXbert finding extraction</span><span class="tag real">real</span></li>
+      <li><span>DenseNet-121 image findings</span><span class="tag real">real</span></li>
+      <li><span>Verdict + confidence</span><span class="tag real">real</span></li>
+    </ul>
+  </section>
+</aside>
+
+<div>
+  <div class="panel empty" id="empty">Upload a chest X-ray to see the report, its per-finding verdicts and the confidence score.</div>
+
+  <div id="out" hidden>
+    <div class="viewers">
+      <figure><img id="orig" alt="Uploaded chest X-ray"><figcaption id="ocap">Uploaded</figcaption></figure>
+      <figure><img id="proc" alt="Verifier view"><figcaption>Verifier input · 8-bit windowed</figcaption></figure>
+    </div>
+
+    <div class="panel result">
+      <div class="top">
+        <span class="badge" id="badge"></span>
+        <div class="score"><b id="scoreN"></b>
+          <div class="bar" title="Report confidence; black tick is the threshold"><i id="scoreBar"></i><u id="thrTick"></u></div>
+        </div>
+      </div>
+      <div class="report" id="report"></div>
+      <div class="legend">
+        <span class="a">supported</span><span class="b">uncertain</span><span class="c">unsupported / contradiction / omission</span>
+      </div>
+      <div class="meta" id="meta"></div>
+    </div>
+
+    <div class="panel result">
+      <h2>Findings checked</h2>
+      <table>
+        <thead><tr><th>Finding</th><th>Report</th><th>Image</th><th>Verdict</th><th>Why</th><th></th></tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+      <p class="hint">“Image” is DenseNet-121 probability. A grey “not assessable” means no independent model covers that finding — it is never counted as correct.</p>
+    </div>
+  </div>
+</div>
+</main>
+
+<script>
+const $ = id => document.getElementById(id);
+let file = null, imageId = null, data = null;
+
+function setFile(f){
+  file = f; imageId = null;
+  $('fname').textContent = f ? f.name : 'No file selected';
+  $('go').disabled = !f; $('err').hidden = true;
+}
+$('file').onchange = e => setFile(e.target.files[0]);
+const drop = $('drop');
+['dragenter','dragover'].forEach(ev => drop.addEventListener(ev, e => {e.preventDefault(); drop.classList.add('over')}));
+['dragleave','drop'].forEach(ev => drop.addEventListener(ev, e => {e.preventDefault(); drop.classList.remove('over')}));
+drop.addEventListener('drop', e => { if(e.dataTransfer.files[0]) setFile(e.dataTransfer.files[0]); });
+
+function fail(msg){ $('err').textContent = msg; $('err').hidden = false; }
+
+$('go').onclick = async () => {
+  if(!file) return;
+  const btn = $('go'); btn.disabled = true; btn.innerHTML = '<span class="spin"></span>Analysing';
+  $('err').hidden = true;
+  try{
+    if(!imageId){
+      const fd = new FormData(); fd.append('file', file);
+      const r = await fetch('/api/upload', {method:'POST', body:fd});
+      const j = await r.json();
+      if(!r.ok) throw new Error(j.detail || 'upload failed');
+      imageId = j.image_id;
+      $('ocap').textContent = `Uploaded · ${j.width}×${j.height}`;
+      $('orig').src = URL.createObjectURL(file);
+      $('proc').src = URL.createObjectURL(file);
+    }
+    const fd = new FormData();
+    fd.append('image_id', imageId);
+    fd.append('threshold', $('thr').value);
+    const r = await fetch('/api/report', {method:'POST', body:fd});
+    const j = await r.json();
+    if(!r.ok) throw new Error(j.detail || 'report failed');
+    data = j; render();
+  }catch(e){ fail(e.message); }
+  btn.textContent = 'Generate report'; btn.disabled = false;
+};
+
+$('thr').oninput = () => { $('thrv').textContent = (+$('thr').value).toFixed(2); if(data) renderStatus(); };
+
+const LABELS = {auto_accepted:'Auto-accepted', review_suggested:'Review suggested', review_required:'Review required'};
+const CLASS = {auto_accepted:'ok', review_suggested:'warn', review_required:'bad'};
+
+function renderStatus(){
+  const t = +$('thr').value, s = data.confidence;
+  let status = data.status;
+  if(s < t) status = 'review_required';
+  $('badge').textContent = LABELS[status] || status;
+  $('badge').className = 'badge ' + (CLASS[status] || 'warn');
+  $('scoreN').textContent = s.toFixed(2);
+  $('scoreBar').style.width = (s*100) + '%';
+  $('thrTick').style.left = (t*100) + '%';
+  $('meta').textContent = `Model ${data.model} · end-to-end ${data.latency_ms} ms · threshold ${t.toFixed(2)} · confidence is derived from verdicts, not from the generator.`;
+}
+
+function esc(s){ return (s||'').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+function pillClass(v){ return v === 'supported' ? 'supported' : v === 'uncertain' ? 'uncertain' : v === 'not_assessable' ? 'not_assessable' : v; }
+
+function render(){
+  $('empty').hidden = true; $('out').hidden = false;
+  let html = esc(data.text);
+  data.findings.filter(f => f.sentence).forEach(f => {
+    const cls = f.verdict === 'supported' ? 'ok' : f.verdict === 'uncertain' ? 'uncertain'
+              : f.verdict === 'not_assessable' ? 'grey' : 'bad';
+    const safe = esc(f.sentence);
+    if(!html.includes(safe)) return;
+    html = html.replace(safe, `<span class="s ${cls}" title="${esc(f.reason)}">${safe}</span>`);
+  });
+  $('report').innerHTML = html;
+  $('rows').innerHTML = data.findings.map(f => {
+    const rep = f.polarity > 0 ? 'present' : f.polarity < 0 ? 'absent' : 'not mentioned';
+    const prob = f.image_prob == null ? '—' : (f.image_prob*100).toFixed(0) + '%';
+    const canReview = {{ 'true' if user.role == 'radiologist' or user.is_admin else 'false' }};
+    const btns = canReview ? `<button class="mini" onclick="review(${f.id ?? 'null'},'accept')">accept</button>
+      <button class="mini" onclick="review(${f.id ?? 'null'},'reject')">reject</button>` : '';
+    return `<tr><td>${esc(f.label)}</td><td>${rep}</td><td>${prob}</td>
+      <td><span class="pill ${pillClass(f.verdict)}">${f.verdict.replace('_',' ')}</span></td>
+      <td>${esc(f.reason)}</td><td>${btns}</td></tr>`;
+  }).join('');
+  renderStatus();
+}
+
+async function review(id, action){
+  if(id == null){ fail('this finding is not stored yet'); return; }
+  const fd = new FormData(); fd.append('action', action);
+  const r = await fetch(`/api/findings/${id}/review`, {method:'POST', body:fd});
+  if(!r.ok){ const j = await r.json().catch(()=>({})); fail(j.detail || 'review failed'); }
+}
+</script>
+</body>
+</html>

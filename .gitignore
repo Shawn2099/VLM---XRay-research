@@ -14,10 +14,17 @@ medgemma/wheels_torch/
 
 # ---- python ----
 metrics-venv/
+proto-venv/
 .venv/
 venv/
 __pycache__/
 *.py[cod]
+
+# ---- TrustMed runtime data (SQLite, uploaded images, calibration) ----
+data_trustmed/
+t_cookies.txt
+_proto/
+_trustmed_proto/
 
 # ---- datasets and binary fixtures (rebuilt with test/fetch_openi*.py,
 #      test/make_extra_dicom.py, deploy/make_test_dicom.py) ----

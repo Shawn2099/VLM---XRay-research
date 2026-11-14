@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TrustMed — history</title>
+<style>
+:root{--paper:#f4f6f6;--card:#fff;--ink:#16212a;--muted:#5b6b76;--line:#d9e0e3;--teal:#0e6f73;
+      --ok-soft:#e1f2e8;--ok:#216b45;--warn-soft:#fdf0d8;--warn:#9a5b00;--bad-soft:#fbe4e4;--bad:#8a1f1f;
+      --film:#0e1419;--film-ink:#c9d3d9;--font:"Segoe UI",system-ui,-apple-system,Arial,sans-serif}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.5 var(--font)}
+header{display:flex;align-items:baseline;gap:14px;padding:14px 28px;background:var(--film);color:#fff}
+header h1{margin:0;font:600 22px var(--font)}
+header span{color:var(--film-ink);font-size:13px}
+header a{color:#fff;margin-left:auto;font-size:13px}
+main{max-width:1100px;margin:0 auto;padding:24px 28px}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden;font-size:14px}
+th,td{text-align:left;padding:9px 12px;border-top:1px solid var(--line)}
+th{background:#eef2f3;color:var(--muted);font-size:12.5px;font-weight:600}
+.pill{font-size:12px;padding:1px 8px;border-radius:10px}
+.pill.auto_accepted{background:var(--ok-soft);color:var(--ok)}
+.pill.review_suggested{background:var(--warn-soft);color:var(--warn)}
+.pill.review_required{background:var(--bad-soft);color:var(--bad)}
+.empty{padding:40px;text-align:center;color:var(--muted)}
+</style>
+</head>
+<body>
+<header><h1>TrustMed</h1><span>report history</span><a href="/">← back to worklist</a></header>
+<main>
+  {% if reports %}
+  <table>
+    <thead><tr><th>#</th><th>Image</th><th>Status</th><th>Confidence</th><th>Created</th><th></th></tr></thead>
+    <tbody>
+      {% for r in reports %}
+      <tr>
+        <td>{{ r.id }}</td>
+        <td>{{ r.filename }}</td>
+        <td><span class="pill {{ r.status }}">{{ r.status.replace('_', ' ') }}</span></td>
+        <td>{{ '%.2f'|format(r.confidence) }}</td>
+        <td>{{ r.created_at }}</td>
+        <td><a href="/api/reports/{{ r.id }}">json</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <div class="empty">No reports yet.</div>
+  {% endif %}
+</main>
+</body>
+</html>
