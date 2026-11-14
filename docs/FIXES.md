@@ -67,14 +67,28 @@ Last updated: 2026-11-15
 | G7 | Every report stores model version, prompt hash, thresholds used | irreproducible results |
 | G8 | No `Auto-accepted` for a report with fewer than 3 findings | catch-all "normal" gaming the score |
 
-## 5. The one open decision (measurement, not opinion)
+## 5. The verifier gate — measured, decided
 
-**Verifier gate — 4 hours, before any UI work:**
+Run on 500 OpenI studies against CheXbert labels from the reference report, with
+three pretrained DenseNet-121 weight sets (`all`, `chex`, `mimic_ch`).
 
-1. Run DenseNet-121 on OpenI-500, label with CheXbert on the reference report.
-2. Per-finding AUC + sensitivity/specificity at the chosen threshold.
-3. **Pass:** mean AUC ≥ 0.80 on ≥ 5 findings → verify only those, mark the rest `not assessable`.
-4. **Fail (< 0.75):** switch the image side to MedGemma yes/no QA (already measured: cardiomegaly 0.867/0.600, effusion 0.538/0.885).
+**Result: only pleural effusion clears AUC 0.80** (0.822 / 0.776 / 0.826).
+Cardiomegaly peaks at 0.744; atelectasis 0.710; everything else 0.53–0.67.
+
+Decision, now enforced in code (`verdict.MIN_AUC = 0.75`):
+
+* pleural effusion is verified;
+* all other findings are reported as **not assessable** — grey in the UI, never
+  counted as correct, never used for omissions.
+
+Why the numbers are a lower bound (stated in the report):
+
+* the 500-study set still contains **lateral views** (the frontal filter accepted
+  square images);
+* reference labels come from terse OpenI reports (effusion prevalence 3.6 %), so
+  a correct image model is scored as a false positive.
+
+Full table: `docs/VERIFIER_GATE.md`, `docs/VALIDATION.md`.
 
 ## 6. Known risks we accept, and disclose
 

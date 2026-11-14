@@ -59,31 +59,51 @@ NOT_ASSESSABLE = {"Support Devices", "No Finding"}
 
 _model = None
 _lock = threading.Lock()
+_models: dict[str, tuple] = {}
+
+
+def _load_one(weights: str):
+    import torch
+    import torchxrayvision as xrv
+
+    if weights in _models:
+        return _models[weights]
+    model = xrv.models.DenseNet(weights=weights).eval()
+    found = [p for p in model.pathologies if p]
+    unknown = [p for p in found if p not in EXPECTED_XRV]
+    mapped = [p for p in found if p in XRV_TO_CHEXBERT]
+    if unknown:
+        raise RuntimeError(
+            "TorchXRayVision returned labels this build does not know; "
+            f"refusing to guess: {unknown}"
+        )
+    if len(mapped) < 4:
+        raise RuntimeError(
+            f"{weights} exposes only {mapped}; not enough overlapping findings to verify anything"
+        )
+    _models[weights] = (model, torch)
+    return _models[weights]
 
 
 def _load():
     global _model
-    with _lock:
-        if _model is None:
-            import torch
-            import torchxrayvision as xrv
-
-            model = xrv.models.DenseNet(weights=config.DENSENET_WEIGHTS).eval()
-            found = [p for p in model.pathologies if p]
-            unknown = [p for p in found if p not in EXPECTED_XRV]
-            mapped = [p for p in found if p in XRV_TO_CHEXBERT]
-            if unknown:
-                raise RuntimeError(
-                    "TorchXRayVision returned labels this build does not know; "
-                    f"refusing to guess: {unknown}"
-                )
-            if len(mapped) < 4:
-                raise RuntimeError(
-                    f"{config.DENSENET_WEIGHTS} exposes only {mapped}; "
-                    "not enough overlapping findings to verify anything"
-                )
-            _model = (model, torch)
+    if _model is None:
+        _model = _load_one(config.DENSENET_WEIGHTS)
     return _model
+
+
+def _infer(weights: str, gray: np.ndarray) -> dict[str, float]:
+    model, torch = _load_one(weights)
+    batch = _preprocess(gray)
+    with _lock, torch.no_grad():
+        raw = model(batch)[0].tolist()
+    per_label: dict[str, float] = {}
+    for name, prob in zip(model.pathologies, raw):
+        target = XRV_TO_CHEXBERT.get(name)
+        if target is None:
+            continue
+        per_label[target] = max(per_label.get(target, 0.0), float(prob))
+    return per_label
 
 
 def _preprocess(gray: np.ndarray):
@@ -98,22 +118,17 @@ def _preprocess(gray: np.ndarray):
     return torch.from_numpy(transform(image).astype("float32"))[None, ...]
 
 
-def predict(gray_path: str) -> dict[str, float]:
-    model, torch = _load()
+def predict(gray_path: str, weights: str = "") -> dict[str, float]:
+    """Average of one or more checkpoints (comma separated gains a small ensemble)."""
     with Image.open(gray_path) as image:
         gray = np.asarray(image.convert("L"))
 
-    batch = _preprocess(gray)
-    with _lock, torch.no_grad():
-        raw = model(batch)[0].tolist()
-
-    per_label: dict[str, float] = {}
-    for name, prob in zip(model.pathologies, raw):
-        target = XRV_TO_CHEXBERT.get(name)
-        if target is None:
-            continue
-        per_label[target] = max(per_label.get(target, 0.0), float(prob))
-    return {k: round(v, 4) for k, v in per_label.items()}
+    names = [w.strip() for w in (weights or config.DENSENET_WEIGHTS).split(",") if w.strip()]
+    totals: dict[str, float] = {}
+    for name in names:
+        for label, prob in _infer(name, gray).items():
+            totals[label] = totals.get(label, 0.0) + prob
+    return {label: round(value / len(names), 4) for label, value in totals.items()}
 
 
 def self_test() -> dict:

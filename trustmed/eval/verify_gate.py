@@ -17,6 +17,8 @@ import json
 import pathlib
 from collections import defaultdict
 
+import numpy as np
+from PIL import Image
 from sklearn.metrics import roc_auc_score, roc_curve
 
 from trustmed import config, db
@@ -25,6 +27,13 @@ from trustmed.services import classifier, findings
 ROOT = pathlib.Path(__file__).resolve().parent.parent.parent
 DATA = ROOT / "test" / "data" / "openi500"
 OUT_MD = ROOT / "docs" / "VERIFIER_GATE.md"
+
+
+def symmetry(path: pathlib.Path) -> float:
+    """Correlation with the horizontal mirror; laterals score low, frontals high."""
+    array = np.asarray(Image.open(path).convert("L").resize((224, 224)), dtype=np.float32)
+    array = (array - array.mean()) / (array.std() + 1e-6)
+    return float((array * array[:, ::-1]).mean())
 
 
 def reference_labels(report: str, wanted: set[str]) -> dict[str, int]:
@@ -39,19 +48,42 @@ def reference_labels(report: str, wanted: set[str]) -> dict[str, int]:
     return out
 
 
-def youden_threshold(y_true: list[int], scores: list[float]) -> tuple[float, float, float]:
+def operating_points(y_true: list[int], scores: list[float]) -> dict:
+    """Two thresholds at 95 % confidence in each direction.
+
+    t_pos: lowest score whose specificity is >= 0.95  -> safe to confirm/contradict
+    t_neg: highest score whose sensitivity is >= 0.95 -> safe to call absent
+    Youden is deliberately not used: at 3 % prevalence it produces flags that are
+    almost always false positives.
+    """
     if len(set(y_true)) < 2:
-        return 0.5, 0.0, 0.0
+        return {}
     fpr, tpr, thresholds = roc_curve(y_true, scores)
-    best = max(range(len(thresholds)), key=lambda i: tpr[i] - fpr[i])
-    threshold = float(thresholds[best])
-    # recompute sens/spec at that threshold for clarity
-    tp = sum(1 for y, s in zip(y_true, scores) if y == 1 and s >= threshold)
-    fn = sum(1 for y, s in zip(y_true, scores) if y == 1 and s < threshold)
-    fp = sum(1 for y, s in zip(y_true, scores) if y == 0 and s >= threshold)
-    sens = tp / (tp + fn) if tp + fn else 0.0
-    spec = 1 - fp / (fp + (len(y_true) - tp - fn - fp)) if (len(y_true) - tp - fn - fp) > 0 else 0.0
-    return round(threshold, 3), round(sens, 3), round(spec, 3)
+    spec = 1.0 - fpr
+
+    high = [i for i in range(len(thresholds)) if spec[i] >= 0.95]
+    low = [i for i in range(len(thresholds)) if tpr[i] >= 0.95]
+    t_pos = float(thresholds[high[0]]) if high else 1.01
+    t_neg = float(thresholds[low[-1]]) if low else -0.01
+
+    def at(threshold: float) -> tuple[float, float, float]:
+        tp = sum(1 for yy, pp in zip(y_true, scores) if yy == 1 and pp >= threshold)
+        fn = sum(1 for yy, pp in zip(y_true, scores) if yy == 1 and pp < threshold)
+        fp = sum(1 for yy, pp in zip(y_true, scores) if yy == 0 and pp >= threshold)
+        tn = sum(1 for yy, pp in zip(y_true, scores) if yy == 0 and pp < threshold)
+        sens = tp / (tp + fn) if tp + fn else 0.0
+        spec_ = tn / (tn + fp) if tn + fp else 0.0
+        ppv = tp / (tp + fp) if tp + fp else 0.0
+        return round(sens, 3), round(spec_, 3), round(ppv, 3)
+
+    sens_pos, spec_pos, ppv_pos = at(t_pos)
+    return {
+        "thr_pos": round(t_pos, 3),
+        "thr_neg": round(t_neg, 3),
+        "sens_at_pos": sens_pos,
+        "spec_at_pos": spec_pos,
+        "ppv_at_pos": ppv_pos,
+    }
 
 
 def main() -> None:
@@ -60,6 +92,8 @@ def main() -> None:
     parser.add_argument("--weights", default=config.DENSENET_WEIGHTS,
                         help="TorchXRayVision weight set, e.g. densenet121-res224-chex")
     parser.add_argument("--out", default="", help="calibration output path")
+    parser.add_argument("--min-symmetry", type=float, default=-1.0,
+                        help="drop images whose mirror correlation is below this (lateral filter)")
     args = parser.parse_args()
 
     config.DENSENET_WEIGHTS = args.weights
@@ -72,6 +106,13 @@ def main() -> None:
     ]
     if args.limit:
         records = records[: args.limit]
+    if args.min_symmetry > -1:
+        kept = []
+        for record in records:
+            if symmetry(DATA / record["file"]) >= args.min_symmetry:
+                kept.append(record)
+        print(f"symmetry filter >= {args.min_symmetry}: {len(kept)}/{len(records)} kept", flush=True)
+        records = kept
 
     wanted = set(classifier.XRV_TO_CHEXBERT.values())
     per_label: dict[str, dict[str, list]] = defaultdict(lambda: {"y": [], "p": []})
@@ -99,20 +140,19 @@ def main() -> None:
             }
             continue
         auc = float(roc_auc_score(y, p))
-        threshold, sens, spec = youden_threshold(y, p)
-        tp = sum(1 for yy, pp in zip(y, p) if yy == 1 and pp >= threshold)
-        fp = sum(1 for yy, pp in zip(y, p) if yy == 0 and pp >= threshold)
-        ppv = tp / (tp + fp) if tp + fp else 0.0
+        points = operating_points(y, p)
         summary[label] = {
             "n": len(y),
             "positives": positives,
             "auc": round(auc, 3),
-            "threshold": threshold,
-            "sens": sens,
-            "spec": spec,
-            "ppv": round(ppv, 3),
             "prevalence": round(positives / len(y), 3),
             "trusted": auc >= 0.80,
+            **points,
+            # kept for backwards compatibility with older calibration files
+            "threshold": points.get("thr_pos", config.POSITIVE_THRESHOLD),
+            "sens": points.get("sens_at_pos"),
+            "spec": points.get("spec_at_pos"),
+            "ppv": points.get("ppv_at_pos"),
         }
 
     config.DATA_DIR.mkdir(parents=True, exist_ok=True)

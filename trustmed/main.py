@@ -81,11 +81,17 @@ def logout():
 @app.get("/health")
 def health():
     backend = generator.info()
+    full, advisory = verdict.gate()
     return {
         "status": "ok",
         "version": APP_VERSION,
         "backend": backend,
         "verifier": classifier.self_test(),
+        "gate": {
+            "verified": sorted(full),
+            "advisory": sorted(advisory),
+            "calibrated": config.CALIBRATION_PATH.is_file(),
+        },
     }
 
 

@@ -32,6 +32,9 @@ VERIFIABLE = set(classifier.XRV_TO_CHEXBERT.values()) - classifier.NOT_ASSESSABL
 
 # minimum per-finding AUC for a label to be assessed at all (guardrail G2)
 MIN_AUC = 0.75
+ADVISORY_AUC = 0.65          # flag-only tier: may raise suspicion, may never clear
+ADVISORY_LOW = 0.10
+ADVISORY_HIGH = 0.90
 
 
 def _calibration() -> dict:
@@ -41,42 +44,55 @@ def _calibration() -> dict:
         return {}
 
 
-def trusted() -> set[str]:
-    """Labels the measured gate lets us verify.
+def gate() -> tuple[set[str], set[str]]:
+    """(full, advisory) label sets from the measured gate.
 
-    Without a calibration file we fall back to the static map. With one, a label
-    must have AUC >= MIN_AUC, so the system cannot claim to verify findings its
-    own image model cannot separate.
+    full     - AUC >= 0.75: may say supported or unsupported
+    advisory - 0.65 <= AUC < 0.75: may only flag extreme disagreement
+    everything else is not assessable.
     """
     saved = _calibration().get("classifier", {})
     if not saved:
-        return set(VERIFIABLE)
-    keep = {
-        label
-        for label, stats in saved.items()
-        if label in VERIFIABLE and (stats.get("auc") or 0.0) >= MIN_AUC
-    }
-    return keep or set(VERIFIABLE)
+        return set(VERIFIABLE), set()
+    full: set[str] = set()
+    advisory: set[str] = set()
+    for label, stats in saved.items():
+        if label not in VERIFIABLE:
+            continue
+        auc = stats.get("auc") or 0.0
+        if auc >= MIN_AUC:
+            full.add(label)
+        elif auc >= ADVISORY_AUC:
+            advisory.add(label)
+    if not full and not advisory:
+        return set(VERIFIABLE), set()
+    return full, advisory
 
 
-def thresholds() -> dict[str, float]:
-    """Per-finding positive threshold (guardrail G3); falls back to the global one."""
+def trusted() -> set[str]:
+    """Backwards-compatible alias for the fully verified set."""
+    return gate()[0]
+
+
+def thresholds() -> dict[str, dict]:
+    """Per-finding operating points from the measured gate (guardrail G3)."""
     saved = _calibration().get("classifier", {})
-    return {
-        label: float(saved.get(label, {}).get("threshold", config.POSITIVE_THRESHOLD))
-        for label in VERIFIABLE
-    }
+    return {label: stats for label, stats in saved.items() if label in VERIFIABLE}
 
 
-def _cut(label: str, table: dict[str, float]) -> float:
-    return table.get(label, config.POSITIVE_THRESHOLD)
+def _cut(label: str, table: dict[str, dict]) -> tuple[float, float]:
+    stats = table.get(label, {})
+    return (
+        float(stats.get("thr_pos", config.POSITIVE_THRESHOLD)),
+        float(stats.get("thr_neg", config.UNCERTAIN_FLOOR)),
+    )
 
 
 def apply(
     findings: list[dict], probs: dict[str, float], include_omissions: bool = True
 ) -> list[dict]:
     table = thresholds()
-    allowed = trusted()
+    allowed, advisory = gate()
     rows: list[dict] = []
     mentioned: set[str] = set()
 
@@ -87,30 +103,44 @@ def apply(
         severity = SEVERITY.get(label, 1)
         prob = probs.get(label)
 
-        if label not in allowed or prob is None:
+        if prob is None or (label not in allowed and label not in advisory):
             verdict = "not_assessable"
             reason = (
                 "no independent image model covers this finding"
                 if label not in VERIFIABLE
                 else "image model does not separate this finding reliably (AUC gate)"
             )
+        elif label in advisory:
+            # flag-only tier: extreme disagreement may raise suspicion, agreement proves nothing
+            if polarity > 0 and prob <= ADVISORY_LOW:
+                verdict = "unsupported"
+                reason = f"advisory: image {prob:.2f} \u2264 {ADVISORY_LOW:.2f} while report says present"
+            elif polarity < 0 and prob >= ADVISORY_HIGH:
+                verdict = "contradiction"
+                reason = f"advisory: image {prob:.2f} \u2265 {ADVISORY_HIGH:.2f} while report says absent"
+            else:
+                verdict = "not_assessable"
+                reason = "advisory only (weak AUC); cannot confirm or clear this finding"
         elif item.get("hedged"):
             verdict = "uncertain"
             reason = f"report hedges this finding; image {prob:.2f}"
         else:
-            cut = _cut(label, table)
+            t_pos, t_neg = _cut(label, table) if label in table else (
+                config.POSITIVE_THRESHOLD,
+                config.UNCERTAIN_FLOOR,
+            )
             if polarity > 0:
-                if prob >= cut:
-                    verdict, reason = "supported", f"report says present; image {prob:.2f} \u2265 {cut:.2f}"
-                elif prob >= config.UNCERTAIN_FLOOR:
-                    verdict, reason = "uncertain", f"report says present; image {prob:.2f} is borderline"
+                if prob >= t_pos:
+                    verdict, reason = "supported", f"report says present; image {prob:.2f} \u2265 {t_pos:.2f}"
+                elif prob <= t_neg:
+                    verdict, reason = "unsupported", f"report says present; image {prob:.2f} \u2264 {t_neg:.2f}"
                 else:
-                    verdict, reason = "unsupported", f"report says present; image {prob:.2f} < {config.UNCERTAIN_FLOOR:.2f}"
+                    verdict, reason = "uncertain", f"report says present; image {prob:.2f} is between {t_neg:.2f} and {t_pos:.2f}"
             else:
-                if prob >= cut:
-                    verdict, reason = "contradiction", f"report says absent; image {prob:.2f} \u2265 {cut:.2f}"
+                if prob >= t_pos:
+                    verdict, reason = "contradiction", f"report says absent; image {prob:.2f} \u2265 {t_pos:.2f}"
                 else:
-                    verdict, reason = "supported", f"report says absent; image {prob:.2f} agrees"
+                    verdict, reason = "supported", f"report says absent; image {prob:.2f} < {t_pos:.2f}"
 
         rows.append(
             {

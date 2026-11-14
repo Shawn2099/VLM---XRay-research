@@ -33,7 +33,12 @@ def main() -> None:
     parser.add_argument("--results", required=True)
     parser.add_argument("--limit", type=int, default=0)
     parser.add_argument("--out", default="")
+    parser.add_argument("--ignore-gate", action="store_true",
+                        help="assess every mapped label, to measure the signal itself")
     args = parser.parse_args()
+
+    if args.ignore_gate:
+        verdict.gate = lambda: (set(verdict.VERIFIABLE), set())  # type: ignore[assignment]
 
     rows = [
         json.loads(line)
@@ -78,12 +83,10 @@ def main() -> None:
                 continue
             if row_v["verdict"] == "not_assessable":
                 continue
-            # a generated *positive* is wrong if the reference is negative
-            wrong = positive(pred_labels, label) and not positive(ref_labels, label)
-            naive = positive(pred_labels, label) != positive(ref_labels, label)
+            # is the *report* wrong about this label, whatever the verifier said?
+            wrong = positive(pred_labels, label) != positive(ref_labels, label)
             buckets[row_v["verdict"]]["rows"] += 1
             buckets[row_v["verdict"]]["wrong"] += int(wrong)
-            buckets[row_v["verdict"]]["mismatch"] += int(naive)
             per_label[label][row_v["verdict"]]["rows"] += 1
             per_label[label][row_v["verdict"]]["wrong"] += int(wrong)
 
@@ -95,16 +98,13 @@ def main() -> None:
 
     order = ["supported", "uncertain", "unsupported", "contradiction"]
     print(f"\n{len(rows)} reports\n")
-    print("| verdict | rows | positive-call errors | rate | any mismatch | rate |")
-    print("|---|---|---|---|---|---|")
+    print("| verdict | rows | report wrong | rate |")
+    print("|---|---|---|---|")
     for name in order:
         counter = buckets.get(name)
         if not counter or not counter["rows"]:
             continue
-        print(
-            f"| {name} | {counter['rows']} | {counter['wrong']} | {rate(counter, 'wrong'):.3f} | "
-            f"{counter['mismatch']} | {rate(counter, 'mismatch'):.3f} |"
-        )
+        print(f"| {name} | {counter['rows']} | {counter['wrong']} | {rate(counter, 'wrong'):.3f} |")
 
     supported = buckets.get("supported", Counter())
     flagged = Counter()
