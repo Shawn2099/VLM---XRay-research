@@ -1,0 +1,44 @@
+# ---- model weights (never commit) ----
+model/
+medgemma-1.5-4b-it/
+*.safetensors
+*.bin
+*.gguf
+*.pth
+*.onnx
+
+# ---- offline wheel bundles (server has no internet; built by deploy/push.ps1) ----
+deploy/wheels/
+medgemma/wheels/
+medgemma/wheels_torch/
+
+# ---- python ----
+metrics-venv/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+
+# ---- datasets and binary fixtures (rebuilt with test/fetch_openi*.py,
+#      test/make_extra_dicom.py, deploy/make_test_dicom.py) ----
+test/data/*.parquet
+test/data/dicom/**/*.dcm
+test/data/openi/*.jpg
+test/data/openi/*.png
+test/data/openi/*.dcm
+test/data/openi500/*.jpg
+test/data/openi500/*.png
+
+# ---- incident-response evidence: contains live malware artifacts. DO NOT PUBLISH ----
+icccserver-IR-*/
+
+# ---- secrets ----
+*.key
+*.pem
+.env
+.env.*
+
+# ---- misc ----
+*.log
+.DS_Store
+Thumbs.db

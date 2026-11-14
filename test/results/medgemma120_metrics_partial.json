@@ -1,0 +1,12 @@
+{
+  "results": "test\\results\\medgemma_t0\\results.jsonl",
+  "n": 120,
+  "bleu4": 4.58,
+  "rougeL": 0.2173,
+  "radgraph": {
+    "RG_E": 0.3452,
+    "RG_ER": 0.2962,
+    "RG_Complete": 0.225,
+    "model_type": "radgraph"
+  }
+}

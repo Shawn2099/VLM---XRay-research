@@ -1,0 +1,115 @@
+{
+  "left": "cxr500_t0",
+  "right": "medgemma500_t0",
+  "n": 500,
+  "macro_f1": {
+    "mean_difference": 0.0661,
+    "ci95": [
+      0.0097,
+      0.1206
+    ],
+    "p_bootstrap": 0.012,
+    "significant": true
+  },
+  "unigram_f1": {
+    "mean_difference": 0.0615,
+    "ci95": [
+      0.0514,
+      0.0715
+    ],
+    "p_bootstrap": 0.0,
+    "significant": true
+  },
+  "labels": {
+    "atelectasis": {
+      "mean_difference": 0.1338,
+      "ci95": [
+        -0.027,
+        0.2838
+      ],
+      "p_bootstrap": 0.088,
+      "significant": false
+    },
+    "cardiomegaly": {
+      "mean_difference": 0.0526,
+      "ci95": [
+        -0.0908,
+        0.2085
+      ],
+      "p_bootstrap": 0.516,
+      "significant": false
+    },
+    "consolidation": {
+      "mean_difference": 0.0595,
+      "ci95": [
+        -0.13,
+        0.3389
+      ],
+      "p_bootstrap": 0.824,
+      "significant": false
+    },
+    "edema": {
+      "mean_difference": -0.0958,
+      "ci95": [
+        -0.2105,
+        0.0
+      ],
+      "p_bootstrap": 0.096,
+      "significant": false
+    },
+    "effusion": {
+      "mean_difference": 0.2266,
+      "ci95": [
+        0.0717,
+        0.3713
+      ],
+      "p_bootstrap": 0.002,
+      "significant": true
+    },
+    "pneumonia": {
+      "mean_difference": -0.0259,
+      "ci95": [
+        -0.0882,
+        0.0
+      ],
+      "p_bootstrap": 0.728,
+      "significant": false
+    },
+    "pneumothorax": {
+      "mean_difference": -0.0708,
+      "ci95": [
+        -0.2308,
+        0.0
+      ],
+      "p_bootstrap": 0.748,
+      "significant": false
+    },
+    "nodule_mass": {
+      "mean_difference": 0.2091,
+      "ci95": [
+        0.0,
+        0.4118
+      ],
+      "p_bootstrap": 0.082,
+      "significant": false
+    },
+    "fracture": {
+      "mean_difference": -0.1233,
+      "ci95": [
+        -0.3636,
+        0.0
+      ],
+      "p_bootstrap": 0.666,
+      "significant": false
+    },
+    "normal": {
+      "mean_difference": 0.2953,
+      "ci95": [
+        0.2199,
+        0.3681
+      ],
+      "p_bootstrap": 0.0,
+      "significant": true
+    }
+  }
+}

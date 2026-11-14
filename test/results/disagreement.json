@@ -1,0 +1,143 @@
+{
+  "left": "cxr500_t0",
+  "right": "medgemma500_t0",
+  "n_studies": 500,
+  "finding_rows": 5000,
+  "agreement_rows": 4064,
+  "disagreement_rows": 936,
+  "coverage_if_defer_on_disagreement": 0.813,
+  "error_rate_when_agree": 0.046,
+  "error_rate_agree_ci": [
+    0.04,
+    0.053
+  ],
+  "left_error_rate_overall": 0.165,
+  "right_error_rate_overall": 0.097,
+  "left_error_rate_when_disagree": 0.683,
+  "right_error_rate_when_disagree": 0.317,
+  "disagreement_left_correct": 297,
+  "disagreement_right_correct": 639,
+  "disagreement_neither_correct": 0,
+  "labels": {
+    "atelectasis": {
+      "n": 500,
+      "both_positive": 8,
+      "both_negative": 386,
+      "left_only": 69,
+      "right_only": 37,
+      "disagreements": 106,
+      "disagreement_rate": 0.212,
+      "left_correct_when_disagreed": 34,
+      "right_correct_when_disagreed": 72,
+      "neither_correct_when_disagreed": 0
+    },
+    "cardiomegaly": {
+      "n": 500,
+      "both_positive": 13,
+      "both_negative": 356,
+      "left_only": 121,
+      "right_only": 10,
+      "disagreements": 131,
+      "disagreement_rate": 0.262,
+      "left_correct_when_disagreed": 21,
+      "right_correct_when_disagreed": 110,
+      "neither_correct_when_disagreed": 0
+    },
+    "consolidation": {
+      "n": 500,
+      "both_positive": 1,
+      "both_negative": 419,
+      "left_only": 77,
+      "right_only": 3,
+      "disagreements": 80,
+      "disagreement_rate": 0.16,
+      "left_correct_when_disagreed": 5,
+      "right_correct_when_disagreed": 75,
+      "neither_correct_when_disagreed": 0
+    },
+    "edema": {
+      "n": 500,
+      "both_positive": 2,
+      "both_negative": 439,
+      "left_only": 58,
+      "right_only": 1,
+      "disagreements": 59,
+      "disagreement_rate": 0.118,
+      "left_correct_when_disagreed": 4,
+      "right_correct_when_disagreed": 55,
+      "neither_correct_when_disagreed": 0
+    },
+    "effusion": {
+      "n": 500,
+      "both_positive": 10,
+      "both_negative": 397,
+      "left_only": 78,
+      "right_only": 15,
+      "disagreements": 93,
+      "disagreement_rate": 0.186,
+      "left_correct_when_disagreed": 13,
+      "right_correct_when_disagreed": 80,
+      "neither_correct_when_disagreed": 0
+    },
+    "pneumonia": {
+      "n": 500,
+      "both_positive": 0,
+      "both_negative": 430,
+      "left_only": 70,
+      "right_only": 0,
+      "disagreements": 70,
+      "disagreement_rate": 0.14,
+      "left_correct_when_disagreed": 1,
+      "right_correct_when_disagreed": 69,
+      "neither_correct_when_disagreed": 0
+    },
+    "pneumothorax": {
+      "n": 500,
+      "both_positive": 0,
+      "both_negative": 482,
+      "left_only": 14,
+      "right_only": 4,
+      "disagreements": 18,
+      "disagreement_rate": 0.036,
+      "left_correct_when_disagreed": 5,
+      "right_correct_when_disagreed": 13,
+      "neither_correct_when_disagreed": 0
+    },
+    "nodule_mass": {
+      "n": 500,
+      "both_positive": 1,
+      "both_negative": 482,
+      "left_only": 4,
+      "right_only": 13,
+      "disagreements": 17,
+      "disagreement_rate": 0.034,
+      "left_correct_when_disagreed": 10,
+      "right_correct_when_disagreed": 7,
+      "neither_correct_when_disagreed": 0
+    },
+    "fracture": {
+      "n": 500,
+      "both_positive": 0,
+      "both_negative": 493,
+      "left_only": 7,
+      "right_only": 0,
+      "disagreements": 7,
+      "disagreement_rate": 0.014,
+      "left_correct_when_disagreed": 1,
+      "right_correct_when_disagreed": 6,
+      "neither_correct_when_disagreed": 0
+    },
+    "normal": {
+      "n": 500,
+      "both_positive": 74,
+      "both_negative": 71,
+      "left_only": 18,
+      "right_only": 337,
+      "disagreements": 355,
+      "disagreement_rate": 0.71,
+      "left_correct_when_disagreed": 203,
+      "right_correct_when_disagreed": 152,
+      "neither_correct_when_disagreed": 0
+    }
+  }
+}

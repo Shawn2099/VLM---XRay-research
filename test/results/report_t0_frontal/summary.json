@@ -1,0 +1,243 @@
+{
+  "dataset": "OpenI / IU Chest X-ray (HF mirror)",
+  "n": 74,
+  "ok": 74,
+  "errors": {},
+  "temperature": 0.0,
+  "top_p": 1.0,
+  "latency_s": {
+    "mean": 2.068,
+    "median": 2.01,
+    "p95": 3.016,
+    "max": 3.19
+  },
+  "report_words": {
+    "mean": 37.4,
+    "min": 18,
+    "max": 60
+  },
+  "repetition_8gram": {
+    "mean": 0.0,
+    "max": 0.0
+  },
+  "unigram_f1": 0.2086,
+  "macro_f1": 0.0955,
+  "micro": {
+    "precision": 0.154,
+    "recall": 0.25
+  },
+  "labels": {
+    "atelectasis": {
+      "reference_positive": 6,
+      "predicted_positive": 14,
+      "tp": 1,
+      "fp": 13,
+      "fn": 5,
+      "tn": 55,
+      "precision": 0.071,
+      "recall": 0.167,
+      "f1": 0.1
+    },
+    "cardiomegaly": {
+      "reference_positive": 4,
+      "predicted_positive": 22,
+      "tp": 3,
+      "fp": 19,
+      "fn": 1,
+      "tn": 51,
+      "precision": 0.136,
+      "recall": 0.75,
+      "f1": 0.231
+    },
+    "consolidation": {
+      "reference_positive": 1,
+      "predicted_positive": 12,
+      "tp": 1,
+      "fp": 11,
+      "fn": 0,
+      "tn": 62,
+      "precision": 0.083,
+      "recall": 1.0,
+      "f1": 0.154
+    },
+    "edema": {
+      "reference_positive": 0,
+      "predicted_positive": 8,
+      "tp": 0,
+      "fp": 8,
+      "fn": 0,
+      "tn": 66,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "effusion": {
+      "reference_positive": 3,
+      "predicted_positive": 12,
+      "tp": 0,
+      "fp": 12,
+      "fn": 3,
+      "tn": 59,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "pneumonia": {
+      "reference_positive": 2,
+      "predicted_positive": 14,
+      "tp": 1,
+      "fp": 13,
+      "fn": 1,
+      "tn": 59,
+      "precision": 0.071,
+      "recall": 0.5,
+      "f1": 0.125
+    },
+    "pneumothorax": {
+      "reference_positive": 3,
+      "predicted_positive": 2,
+      "tp": 0,
+      "fp": 2,
+      "fn": 3,
+      "tn": 69,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "nodule_mass": {
+      "reference_positive": 1,
+      "predicted_positive": 3,
+      "tp": 0,
+      "fp": 3,
+      "fn": 1,
+      "tn": 70,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "fracture": {
+      "reference_positive": 3,
+      "predicted_positive": 0,
+      "tp": 0,
+      "fp": 0,
+      "fn": 3,
+      "tn": 71,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "normal": {
+      "reference_positive": 41,
+      "predicted_positive": 17,
+      "tp": 10,
+      "fp": 7,
+      "fn": 31,
+      "tn": 26,
+      "precision": 0.588,
+      "recall": 0.244,
+      "f1": 0.345
+    }
+  },
+  "examples": {
+    "false_positive": [
+      {
+        "id": "0001",
+        "label": "atelectasis",
+        "report": "The chest radiograph shows a small left pleural effusion. There is also mild left lung base atelectasis and trace right pleural effusion. No pulmonary edema or pneumonia is seen. The cardiomediastinal silhouette is normal in size.",
+        "reference": "interstitial markings are diffusely prominent throughout both lungs heart size is normal pulmonary normal"
+      },
+      {
+        "id": "0010",
+        "label": "atelectasis",
+        "report": "The radiologic report reveals a mildly enlarged heart with stable mediastinal and hilar contours. There is no evidence of pleural effusion or pneumothorax. A streaky left basilar opacity is observed, which is most consistent with minor atelectasis.",
+        "reference": "the cardiomediastinal silhouette is normal in size and contour no focal consolidation pneumothorax or large pleural effusion calcified granuloma right base normal"
+      },
+      {
+        "id": "0015",
+        "label": "atelectasis",
+        "report": "The radiologic report reveals a mildly enlarged heart with normal hilar contours. The mediastinal contour is minimally prominent. There are no signs of pneumothorax or pleural effusion. Bibasilar atelectasis is present, more pronounced on the left than the right. No focal consolidation is observed.",
+        "reference": "the heart is normal size the mediastinum is unremarkable a tortuous calcified thoracic aorta is present the lungs are hyperexpanded consistent with emphysema there is no pleural effusion pneumothorax or focal airspace disease the are unremarkable"
+      },
+      {
+        "id": "0034",
+        "label": "atelectasis",
+        "report": "The chest radiograph shows mild cardiomegaly and a tortuous aorta. The lungs are hyperinflated with no evidence of pneumothorax or pleural effusion. Bibasilar opacities, larger on the right side, are likely indicative of atelectasis. No additional lung abnormalities are identified.",
+        "reference": "the lungs are hyperexpanded heart size normal no mass or focal opacities seen stable degenerative changes of the thoracic spine"
+      },
+      {
+        "id": "0045",
+        "label": "atelectasis",
+        "report": "The chest radiograph reveals low lung volumes. The heart size is mildly enlarged. Mediastinal and hilar contours are similar. Pulmonary vasculature is not engorged. There is no focal consolidation, pleural effusion or pneumothorax present. Atelectasis is noted in the lung bases. No acute osseous abnormalities are detected.",
+        "reference": "mild cardiomegaly mediastinal normal width pulmonary vasculature within normal limits the lungs are wellaerated there is no pneumothorax pleural effusion or focal consolidation scarring or atelectasis right midlung"
+      },
+      {
+        "id": "0054",
+        "label": "atelectasis",
+        "report": "The chest radiograph shows a mildly enlarged cardiac silhouette with unchanged mediastinal and hilar contours. There is a minimal streaky opacity in the retrocardiac region, likely due to atelectasis. The right lung is clear, and there is no evidence of pneumothorax or pleural effusion. The pulmonary vasculature appears normal, and no acute osseous abnormalities are identified.",
+        "reference": "heart size and pulmonary vascularity appear within normal limits calcified granuloma is present in the right base no pneumothorax or pleural effusion is seen in the lateral right base is identified an illdefined somewhat oblong opacity this was not present on the previous study the remainder of the "
+      },
+      {
+        "id": "0062",
+        "label": "atelectasis",
+        "report": "The chest radiograph reveals a moderately large region of infiltration in the right lung, likely indicative of pneumonia or pulmonary hemorrhage. A small region of peribronchial opacification is also observed at the left lung base, which could be a second focus of pneumonia or atelectasis. There is no evidence of pneumothorax or pleural effusion. The heart size appears normal.",
+        "reference": "no pneumothorax pleural effusion or airspace consolidation heart size and pulmonary vasculature appear within normal limits are intact"
+      },
+      {
+        "id": "0069",
+        "label": "atelectasis",
+        "report": "The chest radiograph reveals a left-sided prepectoral dual lead pacemaker situated in the right atrium and right ventricle. Signs of previous CABG are visible. No pneumothorax is present. Pulmonary vascular congestion is evident. There is an absence of pulmonary edema. A small amount of linear atelectasis is observed at the base of the left lung.",
+        "reference": "heart size upper limits of normal low lung volumes with mild bronchovascular crowding and right basilar airspace disease no pneumothorax or effusions"
+      }
+    ],
+    "false_negative": [
+      {
+        "id": "0000",
+        "label": "atelectasis",
+        "report": "The radiologic report reveals a consolidation in the right lung. There is also an observation of mild cardiomegaly. The left lung appears to be grossly clear.",
+        "reference": "there is increased opacity within the right upper lobe with possible mass and associated area of atelectasis or focal consolidation the cardiac silhouette is within normal limits opacity in the left midlung overlying the posterior left th rib may represent focal airspace disease no pleural effusion "
+      },
+      {
+        "id": "0017",
+        "label": "atelectasis",
+        "report": "The chest radiograph shows a mildly enlarged heart with mild unfolding and calcification along the aorta. The lungs appear clear without any pleural effusions or pneumothorax. Mild-to-moderate degenerative changes are noted along the thoracic spine.",
+        "reference": "normal cardiomediastinal silhouette interval improvement in lung volumes bilaterally improved aeration of the right and left lung bases bilateral small pleural effusions and left base atelectatic change with interval improvement visualized of the chest are within normal limits"
+      },
+      {
+        "id": "0027",
+        "label": "atelectasis",
+        "report": "The chest radiograph reveals hyperinflated lungs with flattening of the diaphragms, indicative of chronic obstructive pulmonary disease. There is no evidence of focal consolidation, pleural effusion, or pneumothorax. The cardiac and mediastinal silhouettes are normal. A large calcified mass is present in the left upper quadrant, consistent with a calcified splenic lesion seen on splenic ultrasound",
+        "reference": "there is minimal opacity in the left lung base representing atelectasis the lungs are otherwise clear heart size is normal no pneumothorax"
+      },
+      {
+        "id": "0037",
+        "label": "atelectasis",
+        "report": "The chest radiograph reveals low lung volumes. The cardiac size is at the upper limit of normal. The mediastinum appears widened due to mediastinal lymphadenopathy. There are nodules present in both lungs. No evidence of consolidation or pleural effusion is observed.",
+        "reference": "heart is within normal limits negative for focal pulmonary consolidation pleural effusion or pneumothorax mild streaky opacity lateral right lung atelectasis versus scarring"
+      },
+      {
+        "id": "0113",
+        "label": "atelectasis",
+        "report": "The chest radiograph shows clear lungs without any focal consolidation, effusion, or pneumothorax. The cardiomediastinal silhouette is stable and there are no bony abnormalities. There is no evidence of pneumonia or other acute intrathoracic process.",
+        "reference": "pa and lateral views the chest were obtained the cardiomediastinal silhouette is normal in size and configuration prominent bilateral pericardial fat pads the lungs are well aerated there is minimal patchy and air space opacity within the lingula favored as atelectasis"
+      },
+      {
+        "id": "0045",
+        "label": "cardiomegaly",
+        "report": "The chest radiograph reveals low lung volumes. The heart size is mildly enlarged. Mediastinal and hilar contours are similar. Pulmonary vasculature is not engorged. There is no focal consolidation, pleural effusion or pneumothorax present. Atelectasis is noted in the lung bases. No acute osseous abnormalities are detected.",
+        "reference": "mild cardiomegaly mediastinal normal width pulmonary vasculature within normal limits the lungs are wellaerated there is no pneumothorax pleural effusion or focal consolidation scarring or atelectasis right midlung"
+      },
+      {
+        "id": "0017",
+        "label": "effusion",
+        "report": "The chest radiograph shows a mildly enlarged heart with mild unfolding and calcification along the aorta. The lungs appear clear without any pleural effusions or pneumothorax. Mild-to-moderate degenerative changes are noted along the thoracic spine.",
+        "reference": "normal cardiomediastinal silhouette interval improvement in lung volumes bilaterally improved aeration of the right and left lung bases bilateral small pleural effusions and left base atelectatic change with interval improvement visualized of the chest are within normal limits"
+      },
+      {
+        "id": "0036",
+        "label": "effusion",
+        "report": "The chest x-ray shows clear lungs without any focal consolidation, effusion, or edema. The cardiomediastinal silhouette is normal. No acute osseous abnormalities are seen.",
+        "reference": "the cardiomediastinal silhouette and pulmonary vasculature are within normal limits in size the lungs are clear of focal airspace disease pneumothorax or pleural effusion there is corticated irregularity of the right posterior th rib secondary to old rib fracture there are no gross acute bony findin"
+      }
+    ]
+  }
+}

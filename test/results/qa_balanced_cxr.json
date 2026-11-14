@@ -1,0 +1,1068 @@
+{
+  "dataset": "test\\data\\openi500",
+  "n_questions": 112,
+  "per_label": {
+    "cardiomegaly": {
+      "n": 60,
+      "tp": 3,
+      "fn": 27,
+      "tn": 29,
+      "fp": 1,
+      "unknown": 0,
+      "sensitivity": 0.1,
+      "specificity": 0.967,
+      "ppv": 0.75,
+      "npv": 0.518,
+      "accuracy": 0.533,
+      "sensitivity_ci": [
+        0.035,
+        0.256
+      ],
+      "specificity_ci": [
+        0.833,
+        0.994
+      ],
+      "accuracy_ci": [
+        0.409,
+        0.654
+      ],
+      "latency_mean_s": 0.51
+    },
+    "effusion": {
+      "n": 52,
+      "tp": 0,
+      "fn": 26,
+      "tn": 26,
+      "fp": 0,
+      "unknown": 2,
+      "sensitivity": 0.0,
+      "specificity": 1.0,
+      "ppv": 0.0,
+      "npv": 0.5,
+      "accuracy": 0.5,
+      "sensitivity_ci": [
+        0.0,
+        0.129
+      ],
+      "specificity_ci": [
+        0.871,
+        1.0
+      ],
+      "accuracy_ci": [
+        0.369,
+        0.631
+      ],
+      "latency_mean_s": 0.53
+    }
+  },
+  "rows": [
+    {
+      "id": "0060",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.51
+    },
+    {
+      "id": "0301",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.48
+    },
+    {
+      "id": "0376",
+      "label": "cardiomegaly",
+      "reference_positive": true,
+      "answer": "No additional radiologic study is needed at this time.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.49
+    },
+    {
+      "id": "0027",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.51
+    },
+    {
+      "id": "0333",
+      "label": "cardiomegaly",
+      "reference_positive": true,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.58
+    },
+    {
+      "id": "0306",
+      "label": "cardiomegaly",
+      "reference_positive": true,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.48
+    },
+    {
+      "id": "0323",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.44
+    },
+    {
+      "id": "0130",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.49
+    },
+    {
+      "id": "0302",
+      "label": "cardiomegaly",
+      "reference_positive": true,
+      "answer": "Yes, there is moderate cardiomegaly.",
+      "predicted_positive": true,
+      "status": 200,
+      "latency_s": 0.48
+    },
+    {
+      "id": "0218",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.44
+    },
+    {
+      "id": "0019",
+      "label": "cardiomegaly",
+      "reference_positive": true,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.49
+    },
+    {
+      "id": "0121",
+      "label": "cardiomegaly",
+      "reference_positive": true,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.49
+    },
+    {
+      "id": "0066",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.49
+    },
+    {
+      "id": "0058",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.47
+    },
+    {
+      "id": "0419",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.46
+    },
+    {
+      "id": "0483",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.44
+    },
+    {
+      "id": "0017",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no evidence of cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.71
+    },
+    {
+      "id": "0404",
+      "label": "cardiomegaly",
+      "reference_positive": true,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.48
+    },
+    {
+      "id": "0496",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.46
+    },
+    {
+      "id": "0177",
+      "label": "cardiomegaly",
+      "reference_positive": true,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.57
+    },
+    {
+      "id": "0446",
+      "label": "cardiomegaly",
+      "reference_positive": true,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.48
+    },
+    {
+      "id": "0154",
+      "label": "cardiomegaly",
+      "reference_positive": true,
+      "answer": "No, there is no cardiomegaly observed in the chest radiograph.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.63
+    },
+    {
+      "id": "0367",
+      "label": "cardiomegaly",
+      "reference_positive": true,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.46
+    },
+    {
+      "id": "0148",
+      "label": "cardiomegaly",
+      "reference_positive": true,
+      "answer": "No, there is no evidence of cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.67
+    },
+    {
+      "id": "0475",
+      "label": "cardiomegaly",
+      "reference_positive": true,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.47
+    },
+    {
+      "id": "0288",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.51
+    },
+    {
+      "id": "0305",
+      "label": "cardiomegaly",
+      "reference_positive": true,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.48
+    },
+    {
+      "id": "0319",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.54
+    },
+    {
+      "id": "0326",
+      "label": "cardiomegaly",
+      "reference_positive": true,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.45
+    },
+    {
+      "id": "0395",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.46
+    },
+    {
+      "id": "0394",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.48
+    },
+    {
+      "id": "0176",
+      "label": "cardiomegaly",
+      "reference_positive": true,
+      "answer": "Yes, additional radiologic study is needed. An echocardiogram should be performed to further evaluate the suspected pericardial effusion.",
+      "predicted_positive": true,
+      "status": 200,
+      "latency_s": 1.04
+    },
+    {
+      "id": "0272",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.52
+    },
+    {
+      "id": "0398",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.45
+    },
+    {
+      "id": "0307",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No additional radiologic study is needed at this time.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.52
+    },
+    {
+      "id": "0467",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.54
+    },
+    {
+      "id": "0137",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.49
+    },
+    {
+      "id": "0393",
+      "label": "cardiomegaly",
+      "reference_positive": true,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.46
+    },
+    {
+      "id": "0201",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.54
+    },
+    {
+      "id": "0168",
+      "label": "cardiomegaly",
+      "reference_positive": true,
+      "answer": "No, there is no evidence of cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.56
+    },
+    {
+      "id": "0421",
+      "label": "cardiomegaly",
+      "reference_positive": true,
+      "answer": "No additional radiologic study is needed at this time.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.52
+    },
+    {
+      "id": "0279",
+      "label": "cardiomegaly",
+      "reference_positive": true,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.6
+    },
+    {
+      "id": "0444",
+      "label": "cardiomegaly",
+      "reference_positive": true,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.51
+    },
+    {
+      "id": "0142",
+      "label": "cardiomegaly",
+      "reference_positive": true,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.45
+    },
+    {
+      "id": "0220",
+      "label": "cardiomegaly",
+      "reference_positive": true,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.44
+    },
+    {
+      "id": "0146",
+      "label": "cardiomegaly",
+      "reference_positive": true,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.45
+    },
+    {
+      "id": "0122",
+      "label": "cardiomegaly",
+      "reference_positive": true,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.5
+    },
+    {
+      "id": "0480",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.49
+    },
+    {
+      "id": "0055",
+      "label": "cardiomegaly",
+      "reference_positive": true,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.45
+    },
+    {
+      "id": "0200",
+      "label": "cardiomegaly",
+      "reference_positive": true,
+      "answer": "Yes, there is mild cardiomegaly.",
+      "predicted_positive": true,
+      "status": 200,
+      "latency_s": 0.5
+    },
+    {
+      "id": "0227",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.49
+    },
+    {
+      "id": "0387",
+      "label": "cardiomegaly",
+      "reference_positive": true,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.54
+    },
+    {
+      "id": "0123",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "Yes, there is mild cardiomegaly.",
+      "predicted_positive": true,
+      "status": 200,
+      "latency_s": 0.54
+    },
+    {
+      "id": "0139",
+      "label": "cardiomegaly",
+      "reference_positive": true,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.5
+    },
+    {
+      "id": "0341",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.53
+    },
+    {
+      "id": "0165",
+      "label": "cardiomegaly",
+      "reference_positive": true,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.47
+    },
+    {
+      "id": "0481",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.44
+    },
+    {
+      "id": "0299",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.44
+    },
+    {
+      "id": "0489",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.45
+    },
+    {
+      "id": "0198",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.46
+    },
+    {
+      "id": "0147",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.47
+    },
+    {
+      "id": "0493",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.46
+    },
+    {
+      "id": "0051",
+      "label": "effusion",
+      "reference_positive": true,
+      "answer": "No additional radiologic study is needed at this time.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.52
+    },
+    {
+      "id": "0367",
+      "label": "effusion",
+      "reference_positive": true,
+      "answer": "No, there is no pleural effusion.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.44
+    },
+    {
+      "id": "0070",
+      "label": "effusion",
+      "reference_positive": true,
+      "answer": "No, there is no pleural effusion.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.45
+    },
+    {
+      "id": "0352",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No additional radiologic study is needed at this time.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.5
+    },
+    {
+      "id": "0252",
+      "label": "effusion",
+      "reference_positive": true,
+      "answer": "No, there is no pleural effusion.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.45
+    },
+    {
+      "id": "0091",
+      "label": "effusion",
+      "reference_positive": true,
+      "answer": "Additional radiologic study is needed to further evaluate the right pleural effusion.",
+      "predicted_positive": null,
+      "status": 200,
+      "latency_s": 0.64
+    },
+    {
+      "id": "0337",
+      "label": "effusion",
+      "reference_positive": true,
+      "answer": "No additional radiologic study is needed at this time.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.64
+    },
+    {
+      "id": "0087",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.58
+    },
+    {
+      "id": "0089",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.49
+    },
+    {
+      "id": "0290",
+      "label": "effusion",
+      "reference_positive": true,
+      "answer": "No additional radiologic study is needed at this time.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.58
+    },
+    {
+      "id": "0115",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No additional radiologic study is needed at this time.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.5
+    },
+    {
+      "id": "0165",
+      "label": "effusion",
+      "reference_positive": true,
+      "answer": "No, there is no pleural effusion.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.47
+    },
+    {
+      "id": "0333",
+      "label": "effusion",
+      "reference_positive": true,
+      "answer": "No additional radiologic study is needed at this time.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.51
+    },
+    {
+      "id": "0444",
+      "label": "effusion",
+      "reference_positive": true,
+      "answer": "No additional radiologic study is needed at this time.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.51
+    },
+    {
+      "id": "0416",
+      "label": "effusion",
+      "reference_positive": true,
+      "answer": "No additional radiologic study is needed at this time.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.59
+    },
+    {
+      "id": "0251",
+      "label": "effusion",
+      "reference_positive": true,
+      "answer": "No additional radiologic study is needed at this time.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.51
+    },
+    {
+      "id": "0370",
+      "label": "effusion",
+      "reference_positive": true,
+      "answer": "No, there is no appreciable pleural effusion.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.6
+    },
+    {
+      "id": "0417",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No additional radiologic study needed.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.43
+    },
+    {
+      "id": "0035",
+      "label": "effusion",
+      "reference_positive": true,
+      "answer": "No, there is no pleural effusion.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.47
+    },
+    {
+      "id": "0348",
+      "label": "effusion",
+      "reference_positive": true,
+      "answer": "No additional radiologic study needed.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.41
+    },
+    {
+      "id": "0353",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No additional radiologic study is needed at this time.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.59
+    },
+    {
+      "id": "0406",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No additional radiologic study is needed at this time.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.49
+    },
+    {
+      "id": "0123",
+      "label": "effusion",
+      "reference_positive": true,
+      "answer": "Further radiologic studies are recommended to confirm the presence of an infectious process in the left lower lobe and to monitor the pulmonary edema.",
+      "predicted_positive": null,
+      "status": 200,
+      "latency_s": 1.1
+    },
+    {
+      "id": "0291",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.47
+    },
+    {
+      "id": "0489",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.51
+    },
+    {
+      "id": "0492",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.46
+    },
+    {
+      "id": "0287",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No additional radiologic study is needed at this time.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.5
+    },
+    {
+      "id": "0297",
+      "label": "effusion",
+      "reference_positive": true,
+      "answer": "No, there is no pleural effusion.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.48
+    },
+    {
+      "id": "0211",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No additional radiologic study is needed at this time.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.5
+    },
+    {
+      "id": "0234",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.49
+    },
+    {
+      "id": "0173",
+      "label": "effusion",
+      "reference_positive": true,
+      "answer": "No additional radiologic study is needed at this time.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.52
+    },
+    {
+      "id": "0221",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No additional radiologic study is needed at this time.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.64
+    },
+    {
+      "id": "0049",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.46
+    },
+    {
+      "id": "0206",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No additional radiologic study is needed at this time.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.58
+    },
+    {
+      "id": "0268",
+      "label": "effusion",
+      "reference_positive": true,
+      "answer": "No additional radiologic study is needed at this time.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.56
+    },
+    {
+      "id": "0083",
+      "label": "effusion",
+      "reference_positive": true,
+      "answer": "No additional radiologic study is needed at this time.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.65
+    },
+    {
+      "id": "0257",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.55
+    },
+    {
+      "id": "0073",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.5
+    },
+    {
+      "id": "0378",
+      "label": "effusion",
+      "reference_positive": true,
+      "answer": "No additional radiologic study is needed at this time.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.5
+    },
+    {
+      "id": "0360",
+      "label": "effusion",
+      "reference_positive": true,
+      "answer": "No additional radiologic study is needed at this time.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.54
+    },
+    {
+      "id": "0215",
+      "label": "effusion",
+      "reference_positive": true,
+      "answer": "No additional radiologic study is needed at this time.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.56
+    },
+    {
+      "id": "0392",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No additional radiologic study is needed at this time.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.5
+    },
+    {
+      "id": "0454",
+      "label": "effusion",
+      "reference_positive": true,
+      "answer": "No, there is no pleural effusion.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.47
+    },
+    {
+      "id": "0088",
+      "label": "effusion",
+      "reference_positive": true,
+      "answer": "No additional radiologic study is needed at this time.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.51
+    },
+    {
+      "id": "0149",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No additional radiologic study is needed at this time.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.53
+    },
+    {
+      "id": "0233",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.44
+    },
+    {
+      "id": "0475",
+      "label": "effusion",
+      "reference_positive": true,
+      "answer": "No additional radiologic study is needed at this time.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.52
+    },
+    {
+      "id": "0177",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.49
+    },
+    {
+      "id": "0255",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.46
+    },
+    {
+      "id": "0440",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No additional radiologic study is needed at this time.",
+      "predicted_positive": false,
+      "status": 200,
+      "latency_s": 0.62
+    }
+  ]
+}

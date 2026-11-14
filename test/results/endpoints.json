@@ -1,0 +1,201 @@
+{
+  "differential": {
+    "n": 20,
+    "ok": 20,
+    "empty": 0,
+    "latency_mean_s": 1.26,
+    "unique": 17
+  },
+  "determinism": {
+    "n": 5,
+    "identical": 5
+  },
+  "definitional": {
+    "n": 5,
+    "ok": 5,
+    "sample": "Consolidation refers to the filling of the airspaces in the lungs with fluid, cells, tissue, or other substances, resulting in a region of lung tissue that has become dense and solid rather than containing air."
+  },
+  "details": {
+    "differential": [
+      {
+        "id": "0000",
+        "status": 200,
+        "latency_s": 0.96,
+        "text": "Possible differential diagnoses for this patient include pneumonia, atelectasis, and pleural effusion."
+      },
+      {
+        "id": "0001",
+        "status": 200,
+        "latency_s": 1.51,
+        "text": "Possible differential diagnoses based on this patient's chest x-ray could include congestive heart failure, valvular heart disease (given the history of valve replacement and clipping), or potentially a cardiomyopathy."
+      },
+      {
+        "id": "0002",
+        "status": 200,
+        "latency_s": 0.61,
+        "text": "No additional radiologic study is needed at this time."
+      },
+      {
+        "id": "0003",
+        "status": 200,
+        "latency_s": 0.61,
+        "text": "No additional radiologic study is needed at this time."
+      },
+      {
+        "id": "0004",
+        "status": 200,
+        "latency_s": 1.77,
+        "text": "Given the patient's history of long-term smoking and weight loss, further radiologic studies may be beneficial to monitor the progression of the chronic pulmonary disease. A high-resolution CT scan could provide more detailed information about the lung condition."
+      },
+      {
+        "id": "0005",
+        "status": 200,
+        "latency_s": 0.6,
+        "text": "No additional radiologic study is needed at this time."
+      },
+      {
+        "id": "0006",
+        "status": 200,
+        "latency_s": 1.07,
+        "text": "Possible differential diagnoses based on this patient's chest radiograph could include pneumonia, atelectasis, or a lung mass."
+      },
+      {
+        "id": "0007",
+        "status": 200,
+        "latency_s": 1.92,
+        "text": "Given the patient's history of HIV and symptoms of cough, further investigation with CT Chest may be beneficial to rule out Pneumocystis pneumonia (PCP), which is a common radiographic finding in patients with HIV."
+      },
+      {
+        "id": "0008",
+        "status": 200,
+        "latency_s": 1.86,
+        "text": "Possible differential diagnoses based on this patient's chest radiograph could include conditions that cause low lung volumes such as restrictive lung disease, neuromuscular disorders, or pleural diseases. The presence of atelectasis could suggest conditions like pneumonia or lung collapse."
+      },
+      {
+        "id": "0009",
+        "status": 200,
+        "latency_s": 1.25,
+        "text": "Given the presence of a pulmonary nodule, further radiologic studies may be beneficial. A CT scan could provide more detailed information about the nodule."
+      },
+      {
+        "id": "0010",
+        "status": 200,
+        "latency_s": 1.01,
+        "text": "Possible differential diagnoses based on this patient's symptoms could include pneumonia, bronchitis, or other respiratory infections."
+      },
+      {
+        "id": "0011",
+        "status": 200,
+        "latency_s": 1.01,
+        "text": "Given the clear lungs and normal heart size, there are no immediate differential diagnoses suggested by this chest radiograph."
+      },
+      {
+        "id": "0012",
+        "status": 200,
+        "latency_s": 1.49,
+        "text": "Possible differential diagnoses for this patient could include conditions that cause similar symptoms or radiographic findings, such as pneumonia, pulmonary edema, or chronic obstructive pulmonary disease (COPD)."
+      },
+      {
+        "id": "0013",
+        "status": 200,
+        "latency_s": 1.79,
+        "text": "Possible differential diagnoses based on this patient's chest radiograph could include conditions that cause low lung volumes such as restrictive lung disease, neuromuscular disorders, or pleural diseases. The presence of atelectasis could suggest conditions like pneumonia or lung collapse."
+      },
+      {
+        "id": "0014",
+        "status": 200,
+        "latency_s": 1.08,
+        "text": "Possible differential diagnoses based on this patient's symptoms could include pneumonia, bronchitis, or other types of lung infection or inflammation."
+      },
+      {
+        "id": "0015",
+        "status": 200,
+        "latency_s": 2.08,
+        "text": "Possible differential diagnoses based on this patient's chest radiograph could include conditions that cause low lung volumes such as restrictive lung disease, neuromuscular disorders, or pleural diseases. The presence of atelectasis could suggest conditions like pneumonia, lung cancer, or pulmonary embolism."
+      },
+      {
+        "id": "0016",
+        "status": 200,
+        "latency_s": 0.79,
+        "text": "Possible differential diagnoses for this patient include pneumonia, bronchitis, or a foreign body obstruction."
+      },
+      {
+        "id": "0017",
+        "status": 200,
+        "latency_s": 1.46,
+        "text": "Possible differential diagnoses based on this patient's history could include trauma to the chest wall, thoracic fractures, or other injuries that could cause such a collection of subcutaneous air."
+      },
+      {
+        "id": "0018",
+        "status": 200,
+        "latency_s": 1.34,
+        "text": "Given the patient's history of HIV and symptoms of cough, further investigation with CT Chest may be beneficial to rule out atypical infections such as PCP."
+      },
+      {
+        "id": "0019",
+        "status": 200,
+        "latency_s": 0.96,
+        "text": "Possible differential diagnoses based on this patient's history could include trauma, infection, or a post-surgical state."
+      }
+    ],
+    "determinism": [
+      {
+        "id": "0000",
+        "identical": true,
+        "text": "The radiologic report reveals a consolidation in the right lung. There is also an observation of mild cardiomegaly. The left lung appears to be grossly clear."
+      },
+      {
+        "id": "0001",
+        "identical": true,
+        "text": "The chest radiograph shows a small left pleural effusion. There is also mild left lung base atelectasis and trace right pleural effusion. No pulmonary edema or pneumonia is seen. The cardiomediastinal silhouette is normal in size."
+      },
+      {
+        "id": "0002",
+        "identical": true,
+        "text": "The chest x-ray shows clear lungs without any focal consolidation, pleural effusion, or pneumothorax. The heart size is normal, and the mediastinal silhouette and hilar contours are also normal."
+      },
+      {
+        "id": "0003",
+        "identical": true,
+        "text": "The chest radiograph shows normal heart size, mediastinal and hilar contours. The pulmonary vasculature is normal. Lungs are clear without any pleural effusion or pneumothorax. No acute osseous abnormalities are seen."
+      },
+      {
+        "id": "0004",
+        "identical": true,
+        "text": "The chest radiograph reveals a region of peribronchial infiltration in the left lower lobe. The lungs elsewhere are unremarkable with no evidence of cardiac decompensation. There is central adenopathy, predominantly in the left hilus and likely in the right lower paratracheal station. A region of consolidation is also noted in the right upper lobe."
+      }
+    ],
+    "definitional": [
+      {
+        "id": "0000",
+        "status": 200,
+        "latency_s": 1.61,
+        "answer": "Consolidation refers to the filling of the airspaces in the lungs with fluid, cells, tissue, or other substances, resulting in a region of lung tissue that has become dense and solid rather than containing air."
+      },
+      {
+        "id": "0001",
+        "status": 200,
+        "latency_s": 2.15,
+        "answer": "Consolidation refers to the process by which the air within the alveoli, the tiny air sacs within the lungs, is replaced by fluid, pus, blood, cells, or other substances. This results in a region of lung tissue that has a denser appearance on the radiograph."
+      },
+      {
+        "id": "0002",
+        "status": 200,
+        "latency_s": 2.11,
+        "answer": "Consolidation refers to the process by which the air within the alveoli, the tiny air sacs within the lungs, is replaced by fluid, pus, blood, cells, or other substances. This results in a region of lung tissue that has a denser appearance on the radiograph."
+      },
+      {
+        "id": "0003",
+        "status": 200,
+        "latency_s": 2.01,
+        "answer": "Consolidation refers to the process by which the air within the alveoli, the tiny air sacs within the lungs, is replaced by fluid, pus, blood, cells, or other substances. This results in a region of lung tissue that has a denser appearance on the radiograph."
+      },
+      {
+        "id": "0004",
+        "status": 200,
+        "latency_s": 1.95,
+        "answer": "Consolidation refers to the process by which the air within the alveoli, the tiny air sacs within the lungs, is replaced by fluid, pus, blood, cells, or other substances. This results in a region of lung tissue that has a denser appearance on the radiograph."
+      }
+    ]
+  }
+}

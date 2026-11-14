@@ -1,0 +1,920 @@
+{
+  "n_questions": 100,
+  "accuracy": 0.71,
+  "per_label": {
+    "cardiomegaly": {
+      "n": 50,
+      "accuracy": 0.6,
+      "reference_positive": 4,
+      "polarity_unknown": 0
+    },
+    "effusion": {
+      "n": 50,
+      "accuracy": 0.82,
+      "reference_positive": 6,
+      "polarity_unknown": 0
+    }
+  },
+  "rows": [
+    {
+      "id": "0000",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "Yes, the heart appears enlarged.",
+      "predicted_positive": true,
+      "status": 200,
+      "correct": false
+    },
+    {
+      "id": "0000",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion. The costophrenic angles are sharp, and there is no blunting or fluid collection in the pleural spaces.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0001",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "Yes, the heart appears enlarged.",
+      "predicted_positive": true,
+      "status": 200,
+      "correct": false
+    },
+    {
+      "id": "0001",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion. The costophrenic angles are sharp, and there is no blunting or fluid collection in the pleural spaces.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0002",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, the heart size appears within normal limits on this chest X-ray.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0002",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion. The costophrenic angles are sharp, and there is no blunting or fluid collection in the pleural spaces.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0003",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, the heart size appears within normal limits on this chest X-ray.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0003",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion. The costophrenic angles are sharp, and there is no blunting or opacity in the pleural spaces.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0004",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, the heart size appears within normal limits on this chest X-ray.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0004",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion. The costophrenic angles are sharp, and there is no blunting or fluid collection in the pleural spaces.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0005",
+      "label": "cardiomegaly",
+      "reference_positive": true,
+      "answer": "Yes, the heart appears enlarged.",
+      "predicted_positive": true,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0005",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion. The costophrenic angles are sharp, and there is no blunting or fluid collection in the pleural spaces.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0006",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "Yes, the heart appears enlarged.",
+      "predicted_positive": true,
+      "status": 200,
+      "correct": false
+    },
+    {
+      "id": "0006",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion. The costophrenic angles are sharp, and there is no blunting or fluid collection in the pleural spaces.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0007",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "Yes, the heart appears enlarged.",
+      "predicted_positive": true,
+      "status": 200,
+      "correct": false
+    },
+    {
+      "id": "0007",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion. The costophrenic angles are sharp, and there is no blunting or fluid collection in the pleural spaces.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0008",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "Yes, the heart appears enlarged.",
+      "predicted_positive": true,
+      "status": 200,
+      "correct": false
+    },
+    {
+      "id": "0008",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion visible on this chest X-ray. The costophrenic angles are sharp, and there is no blunting or opacification in the pleural spaces.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0009",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, the heart size appears within normal limits on this chest X-ray.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0009",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion. The costophrenic angles are sharp, and there is no blunting or fluid collection in the pleural spaces.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0010",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "Yes, the heart appears enlarged.",
+      "predicted_positive": true,
+      "status": 200,
+      "correct": false
+    },
+    {
+      "id": "0010",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion visible on this chest X-ray. The costophrenic angles are sharp, and there is no blunting or fluid collection in the pleural spaces.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0011",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "Yes, the heart appears enlarged.",
+      "predicted_positive": true,
+      "status": 200,
+      "correct": false
+    },
+    {
+      "id": "0011",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion. The costophrenic angles are sharp, and there is no blunting or fluid collection in the pleural spaces.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0012",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, the heart size appears within normal limits on this chest X-ray.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0012",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion. The costophrenic angles are sharp, and there is no blunting or fluid collection in the pleural spaces.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0013",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "Yes, the heart appears enlarged.",
+      "predicted_positive": true,
+      "status": 200,
+      "correct": false
+    },
+    {
+      "id": "0013",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "Yes, there is a large right pleural effusion.",
+      "predicted_positive": true,
+      "status": 200,
+      "correct": false
+    },
+    {
+      "id": "0014",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly. The heart size appears within normal limits on this chest X-ray.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0014",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion. The costophrenic angles are sharp, and there is no blunting or fluid collection in the pleural spaces.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0015",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "Yes, the heart appears enlarged.",
+      "predicted_positive": true,
+      "status": 200,
+      "correct": false
+    },
+    {
+      "id": "0015",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion visible on this chest X-ray. The costophrenic angles are sharp, and there is no blunting or fluid collection in the pleural spaces.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0016",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "Yes, the heart appears enlarged relative to the chest width.",
+      "predicted_positive": true,
+      "status": 200,
+      "correct": false
+    },
+    {
+      "id": "0016",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion. The costophrenic angles are sharp, and there is no blunting or fluid collection in the pleural spaces.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0017",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "Yes, the heart appears enlarged.",
+      "predicted_positive": true,
+      "status": 200,
+      "correct": false
+    },
+    {
+      "id": "0017",
+      "label": "effusion",
+      "reference_positive": true,
+      "answer": "Yes, there is a small left pleural effusion.",
+      "predicted_positive": true,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0018",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, the heart size appears within normal limits on this chest X-ray.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0018",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion visible on this chest X-ray. The costophrenic angles are sharp, and there is no blunting or fluid collection in the pleural spaces.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0019",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly. The heart size appears within normal limits on this chest X-ray.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0019",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion. The costophrenic angles are sharp, and there is no blunting or opacity in the pleural space.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0020",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "Yes, the heart appears enlarged.",
+      "predicted_positive": true,
+      "status": 200,
+      "correct": false
+    },
+    {
+      "id": "0020",
+      "label": "effusion",
+      "reference_positive": true,
+      "answer": "No, there is no pleural effusion. The costophrenic angles are sharp, and there is no blunting or opacity in the pleural spaces.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": false
+    },
+    {
+      "id": "0021",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "Yes, the heart appears enlarged.",
+      "predicted_positive": true,
+      "status": 200,
+      "correct": false
+    },
+    {
+      "id": "0021",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion. The costophrenic angles are sharp, and there is no blunting or fluid collection in the pleural spaces.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0022",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "Yes, the heart size appears to be mildly enlarged.",
+      "predicted_positive": true,
+      "status": 200,
+      "correct": false
+    },
+    {
+      "id": "0022",
+      "label": "effusion",
+      "reference_positive": true,
+      "answer": "No, there is no pleural effusion. The costophrenic angles are sharp, and there is no blunting or fluid collection in the pleural spaces.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": false
+    },
+    {
+      "id": "0023",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly. The heart size appears within normal limits on this chest X-ray.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0023",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion. The costophrenic angles are sharp, and there is no blunting or fluid collection in the pleural spaces.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0024",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, the heart size appears within normal limits on this chest X-ray.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0024",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion. The costophrenic angles are sharp, and there is no blunting or opacity in the pleural spaces.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0025",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly. The heart size appears within normal limits on this chest X-ray.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0025",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "Yes, there is a small left pleural effusion.",
+      "predicted_positive": true,
+      "status": 200,
+      "correct": false
+    },
+    {
+      "id": "0026",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "Yes, the heart appears enlarged.",
+      "predicted_positive": true,
+      "status": 200,
+      "correct": false
+    },
+    {
+      "id": "0026",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion. The costophrenic angles are sharp, and there is no blunting or fluid collection visible in the pleural spaces.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0027",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, the heart size appears within normal limits on this chest X-ray.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0027",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion. The costophrenic angles are sharp, and there is no blunting or opacity in the pleural spaces.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0028",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, the heart size appears within normal limits on this chest X-ray.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0028",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion. The costophrenic angles are sharp, and there is no blunting or fluid collection in the pleural spaces.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0029",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "Yes, the heart appears enlarged.",
+      "predicted_positive": true,
+      "status": 200,
+      "correct": false
+    },
+    {
+      "id": "0029",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion visible on this chest X-ray. The costophrenic angles are sharp, and there is no blunting or fluid collection in the pleural spaces.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0030",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "Yes, the heart appears enlarged.",
+      "predicted_positive": true,
+      "status": 200,
+      "correct": false
+    },
+    {
+      "id": "0030",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "Yes, there is a large right pleural effusion.",
+      "predicted_positive": true,
+      "status": 200,
+      "correct": false
+    },
+    {
+      "id": "0031",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "Yes, the heart appears enlarged.",
+      "predicted_positive": true,
+      "status": 200,
+      "correct": false
+    },
+    {
+      "id": "0031",
+      "label": "effusion",
+      "reference_positive": true,
+      "answer": "No, there is no pleural effusion. The costophrenic angles are sharp, and there is no blunting or fluid collection in the pleural spaces.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": false
+    },
+    {
+      "id": "0032",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, the heart size appears within normal limits on this chest X-ray.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0032",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion. The costophrenic angles are sharp, and there is no blunting or opacification in the pleural spaces.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0033",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, the heart size appears within normal limits on this chest X-ray.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0033",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion. The costophrenic angles are clear, and there is no blunting or fluid collection visible in the pleural spaces.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0034",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "Yes, the heart appears enlarged.",
+      "predicted_positive": true,
+      "status": 200,
+      "correct": false
+    },
+    {
+      "id": "0034",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "Yes, there is a small right pleural effusion.",
+      "predicted_positive": true,
+      "status": 200,
+      "correct": false
+    },
+    {
+      "id": "0035",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, the heart size appears within normal limits on this chest X-ray.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0035",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion. The costophrenic angles are sharp, and there is no blunting or fluid collection in the pleural spaces.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0036",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, the heart size appears within normal limits on this chest X-ray.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0036",
+      "label": "effusion",
+      "reference_positive": true,
+      "answer": "No, there is no pleural effusion. The costophrenic angles are sharp, and there is no blunting or opacity in the pleural spaces.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": false
+    },
+    {
+      "id": "0037",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, the heart size appears within normal limits on this chest X-ray.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0037",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion. The costophrenic angles are sharp, and there is no blunting or fluid collection in the pleural spaces.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0038",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, the heart size appears within normal limits on this chest X-ray.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0038",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion. The costophrenic angles are sharp, and there is no blunting or fluid collection in the pleural spaces.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0039",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, the heart size appears within normal limits on this chest X-ray.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0039",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion. The costophrenic angles are sharp, and there is no blunting or fluid collection in the pleural spaces.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0040",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, the heart size appears within normal limits on this chest X-ray.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0040",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion. The costophrenic angles are sharp, and there is no blunting or fluid collection in the pleural spaces.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0041",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, the heart size appears within normal limits on this chest X-ray.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0041",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion. The costophrenic angles are sharp, and there is no blunting or opacity in the pleural spaces.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0042",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly. The heart size appears within normal limits on this chest X-ray.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0042",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "Yes, there is a pleural effusion. The right costophrenic angle is blunted, and there is increased opacity in the right lower lung field, consistent with fluid accumulation in the pleural space.",
+      "predicted_positive": true,
+      "status": 200,
+      "correct": false
+    },
+    {
+      "id": "0043",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, the heart size appears within normal limits on this chest X-ray.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0043",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion. The costophrenic angles are sharp, and there is no blunting or fluid collection in the pleural spaces.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0044",
+      "label": "cardiomegaly",
+      "reference_positive": true,
+      "answer": "Yes, the heart appears enlarged.",
+      "predicted_positive": true,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0044",
+      "label": "effusion",
+      "reference_positive": true,
+      "answer": "Yes, there is a large right pleural effusion.",
+      "predicted_positive": true,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0045",
+      "label": "cardiomegaly",
+      "reference_positive": true,
+      "answer": "Yes, the heart appears enlarged.",
+      "predicted_positive": true,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0045",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion visible on this chest X-ray. The costophrenic angles are sharp, and there is no blunting or fluid collection in the pleural space.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0046",
+      "label": "cardiomegaly",
+      "reference_positive": true,
+      "answer": "Yes, the heart appears enlarged.",
+      "predicted_positive": true,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0046",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion visible on this chest X-ray. The costophrenic angles are clear, and there is no blunting or fluid collection in the pleural spaces.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0047",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "Yes, the heart appears enlarged.",
+      "predicted_positive": true,
+      "status": 200,
+      "correct": false
+    },
+    {
+      "id": "0047",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion. The costophrenic angles are sharp, and there is no blunting or opacity in the pleural spaces.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0048",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, the heart size appears within normal limits on this chest X-ray.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0048",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion. The costophrenic angles are sharp, and there is no blunting or fluid collection in the pleural spaces.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0049",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, the heart size appears within normal limits on this chest X-ray.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0049",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion. The costophrenic angles are sharp, and there is no blunting or fluid collection in the pleural spaces.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    }
+  ]
+}

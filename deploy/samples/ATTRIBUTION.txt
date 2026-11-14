@@ -1,0 +1,7 @@
+Chest X-ray PA (3-8-2010)
+Author: Stillwaterising
+License: CC0 1.0 (public domain)
+Source: https://commons.wikimedia.org/wiki/File:Chest_Xray_PA_3-8-2010.png
+
+Used only as a smoke-test input for the deployment. It is not patient data
+from Saintgits or any hospital.

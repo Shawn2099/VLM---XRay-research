@@ -1,0 +1,5 @@
+OpenI / Indiana University Chest X-ray collection
+Source: https://openi.nlm.nih.gov/faq (NLM Open-i)
+Mirror: https://huggingface.co/datasets/Shrey-1329/cxiu_hf_dataset
+Reports are the FINDINGS sections. Research use only.
+Large subset: 500 unique reports, frontal/square only.

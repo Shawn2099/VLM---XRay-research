@@ -1,0 +1,201 @@
+{
+  "differential": {
+    "n": 20,
+    "ok": 20,
+    "empty": 0,
+    "latency_mean_s": 10.82,
+    "unique": 20
+  },
+  "determinism": {
+    "n": 5,
+    "identical": 5
+  },
+  "definitional": {
+    "n": 5,
+    "ok": 5,
+    "sample": "Consolidation refers to the filling of airspaces in the lung with fluid, pus, or other substances, which appears as a dense, opaque area on a chest X-ray."
+  },
+  "details": {
+    "differential": [
+      {
+        "id": "0000",
+        "status": 200,
+        "latency_s": 8.83,
+        "text": "Based on the chest X-ray, the possible differential diagnoses include:\n\n1.  **Pneumonia:** Consolidation or infiltrates in the lung fields.\n2.  **Pneumothorax:** Absence of lung markings in the affected hemithorax.\n3.  **Pleural effusion:** Blunting of the costophrenic angle or opacification in the lower lung fields.\n4.  **Cardiomegaly:** Enlargement of the cardiac silhouette.\n5.  **Pulmonary edema:** Kerley B lines, perihilar haziness, or cardiomegaly.\n6.  **Atelectasis:** Opacification of the lung fields, often in the lower lobes.\n7.  **Mass/Tumor:** A focal opacity or mass within the lung parenchyma.\n8.  **Fibrosis/Scarring:** Reticular or nodular opacities, often in the upper lobes.\n\nThe most likely diagnosis is **Pneumonia** due to the patchy opacities in the right upper lobe."
+      },
+      {
+        "id": "0001",
+        "status": 200,
+        "latency_s": 3.89,
+        "text": "1.  **Pneumonia:** Patchy opacities in the right lung.\n2.  **Pulmonary edema:** Bilateral interstitial markings, possibly Kerley B lines.\n3.  **Interstitial lung disease:** Diffuse reticular or ground-glass opacities.\n4.  **Atelectasis:** Opacification in the right lower lung field.\n5.  **Pneumothorax:** Absence of lung markings in the right apex."
+      },
+      {
+        "id": "0002",
+        "status": 200,
+        "latency_s": 6.36,
+        "text": "Based on the provided chest X-ray, the most likely differential diagnoses are:\n\n1.  **Normal Chest X-ray:** The image shows clear lung fields, normal heart size, and no obvious abnormalities.\n2.  **Mild Asthma/COPD:** While not definitive, the lung volumes appear relatively normal, and there are no clear signs of hyperinflation or bronchial wall thickening.\n3.  **Pneumonia:** No focal consolidation or infiltrates are visible.\n4.  **Pneumothorax:** No pleural line or absence of lung markings is apparent.\n5.  **Pleural Effusion:** No blunting of the costophrenic angles or meniscus sign is seen.\n\nThe most likely diagnosis is a **Normal Chest X-ray**."
+      },
+      {
+        "id": "0003",
+        "status": 200,
+        "latency_s": 13.29,
+        "text": "Based on the chest X-ray provided, here are the possible differential diagnoses, listed from most likely to least likely:\n\n1.  **Normal Chest X-ray:** The image appears unremarkable with no obvious acute pathology.\n2.  **Pneumonia:** While no consolidation is clearly visible, early or atypical pneumonia could be considered, especially if the patient has symptoms.\n3.  **Pneumothorax:** Although less likely given the lack of visible pleural line or lung collapse, a small pneumothorax cannot be entirely ruled out without further evaluation.\n4.  **Pleural Effusion:** No significant blunting of the costophrenic angles is apparent, making a large pleural effusion unlikely.\n5.  **Cardiomegaly:** The heart size appears within normal limits.\n6.  **Pulmonary Embolism:** This is less likely based solely on this X-ray, but it can sometimes present with subtle findings or be normal.\n\n**Imaging Features:**\n\n*   **Normal Chest X-ray:** No focal consolidation, pleural effusion, pneumothorax, or significant cardiomegaly.\n*   **Pneumonia:** (If present) Consolidation or infiltrates in the lung parenchyma.\n*   **Pneumothorax:** (If present) Visible pleural line and absence of lung markings peripheral to the line.\n*   **Pleural Effusion:** (If present) Blunting of the costophrenic angles.\n*   **Cardiomegaly:** Enlarged cardiac silhouette.\n*   **Pulmonary Embolism:** (If present) Can be normal, or show subtle findings like Westermark sign or Hampton hump (less common)."
+      },
+      {
+        "id": "0004",
+        "status": 200,
+        "latency_s": 18.41,
+        "text": "1.  **Pneumonia:** Consolidation in the right lower lobe.\n2.  **Pneumonia:** Consolidation in the left lower lobe.\n3.  **Pneumonia:** Consolidation in the right middle lobe.\n4.  **Pneumonia:** Consolidation in the left upper lobe.\n5.  **Pneumonia:** Consolidation in the right upper lobe.\n6.  **Pneumonia:** Consolidation in the left lower lobe.\n7.  **Pneumonia:** Consolidation in the right lower lobe.\n8.  **Pneumonia:** Consolidation in the left lower lobe.\n9.  **Pneumonia:** Consolidation in the right lower lobe.\n10. **Pneumonia:** Consolidation in the left lower lobe.\n11. **Pneumonia:** Consolidation in the right lower lobe.\n12. **Pneumonia:** Consolidation in the left lower lobe.\n13. **Pneumonia:** Consolidation in the right lower lobe.\n14. **Pneumonia:** Consolidation in the left lower lobe.\n15. **Pneumonia:** Consolidation in the right lower lobe.\n16. **Pneumonia:** Consolidation in the left lower lobe.\n17. **Pneumonia:** Consolidation in the right lower lobe.\n18. **Pneumonia:** Consolidation in the left lower lobe.\n19. **Pneumonia:** Consolidation in the right lower lobe.\n20. **Pneumonia:** Consolidation in the left lower lobe.\n21. **Pneumonia:** Consolidation in the right lower lobe.\n22. **Pneumonia:** Consolidation in the left lower lobe.\n23. **Pneumonia:** Consolidation in the right lower lobe.\n24. **Pneumonia:** Consolidation in the left lower lobe.\n25. **Pneumonia:** Consolidation in the right lower lobe.\n26. **Pneumonia:** Consolidation in the left lower lobe.\n27. **Pneumonia:** Consolidation in the right lower lobe.\n28. **Pneumonia:** Consolidation in the left lower lobe.\n29. **Pneumonia:** Consolidation in the right lower lobe.\n30. **Pneumonia:** Consolidation in the left lower lobe.\n31"
+      },
+      {
+        "id": "0005",
+        "status": 200,
+        "latency_s": 19.17,
+        "text": "1.  **Pneumonia:** Patchy opacity in the right lower lobe.\n2.  **Pneumonia:** Patchy opacity in the right middle lobe.\n3.  **Pneumonia:** Patchy opacity in the left lower lobe.\n4.  **Pneumonia:** Patchy opacity in the left upper lobe.\n5.  **Pneumonia:** Patchy opacity in the right upper lobe.\n6.  **Pneumonia:** Patchy opacity in the left lower lobe.\n7.  **Pneumonia:** Patchy opacity in the right lower lobe.\n8.  **Pneumonia:** Patchy opacity in the right middle lobe.\n9.  **Pneumonia:** Patchy opacity in the left lower lobe.\n10. **Pneumonia:** Patchy opacity in the left upper lobe.\n11. **Pneumonia:** Patchy opacity in the right upper lobe.\n12. **Pneumonia:** Patchy opacity in the left lower lobe.\n13. **Pneumonia:** Patchy opacity in the right lower lobe.\n14. **Pneumonia:** Patchy opacity in the right middle lobe.\n15. **Pneumonia:** Patchy opacity in the left lower lobe.\n16. **Pneumonia:** Patchy opacity in the left upper lobe.\n17. **Pneumonia:** Patchy opacity in the right upper lobe.\n18. **Pneumonia:** Patchy opacity in the left lower lobe.\n19. **Pneumonia:** Patchy opacity in the right lower lobe.\n20. **Pneumonia:** Patchy opacity in the right middle lobe.\n21. **Pneumonia:** Patchy opacity in the left lower lobe.\n22. **Pneumonia:** Patchy opacity in the left upper lobe.\n23. **Pneumonia:** Patchy opacity in the right upper lobe.\n24. **Pneumonia:** Patchy opacity in the left lower lobe.\n25. **Pneumonia:** Patchy opacity in the right lower lobe.\n26. **Pneumonia:** Patchy opacity in the right middle lobe.\n27. **Pneumonia:** Patchy opacity in the left lower lobe.\n28. **Pneumonia:** Patchy opacity in the left upper lobe.\n29. **Pneumonia:**"
+      },
+      {
+        "id": "0006",
+        "status": 200,
+        "latency_s": 3.06,
+        "text": "1.  **Pneumonia:** Right lower lobe opacity.\n2.  **Atelectasis:** Right lower lobe opacity.\n3.  **Pulmonary edema:** Bilateral interstitial markings, cardiomegaly.\n4.  **Heart failure:** Cardiomegaly, pulmonary edema.\n5.  **Mass/Nodule:** Right lower lobe opacity (less likely given the appearance)."
+      },
+      {
+        "id": "0007",
+        "status": 200,
+        "latency_s": 9.6,
+        "text": "Based on the chest X-ray provided, here are the possible differential diagnoses, listed from most likely to least likely:\n\n1.  **Normal Chest X-ray:** The image appears unremarkable with no obvious acute pathology.\n2.  **Mild Cardiomegaly:** The heart size appears slightly enlarged, although not dramatically so.\n3.  **Pneumonia:** While no consolidation is clearly visible, subtle infiltrates could be present, especially in the lower lobes.\n4.  **Pneumothorax:** A small pneumothorax is possible, although no visible pleural line is present.\n5.  **Rib Fracture:** A subtle fracture of the right 6th rib is possible, but not clearly evident.\n\n**Imaging Features:**\n\n*   **Normal:** No focal consolidation, pleural effusion, pneumothorax, or significant cardiomegaly.\n*   **Mild Cardiomegaly:** Heart silhouette appears slightly increased in size.\n*   **Pneumonia:** Subtle opacities, particularly in the lower lung fields.\n*   **Pneumothorax:** Absence of a visible pleural line.\n*   **Rib Fracture:** Subtle cortical irregularity or step-off along the right 6th rib."
+      },
+      {
+        "id": "0008",
+        "status": 200,
+        "latency_s": 6.5,
+        "text": "Based on the provided chest X-ray, the most likely differential diagnoses are:\n\n1.  **Pneumothorax:** The presence of a radiolucent line along the left chest wall, with associated lung collapse, is highly suggestive of a pneumothorax.\n2.  **Rib fracture:** A fracture line may be visible along the left rib cage, although it is not clearly delineated in this image.\n3.  **Pneumonia:** While less likely given the clear demarcation, consolidation in the left lower lobe could represent pneumonia.\n4.  **Atelectasis:** Collapse of the left lung could be due to atelectasis, potentially secondary to the pneumothorax or other causes.\n\nThe imaging feature supporting pneumothorax is the radiolucent line along the left chest wall."
+      },
+      {
+        "id": "0009",
+        "status": 200,
+        "latency_s": 10.92,
+        "text": "Based on the chest X-ray provided, here are the possible differential diagnoses, listed from most likely to least likely:\n\n1.  **Normal Chest X-ray:** The image appears unremarkable with no obvious acute pathology.\n2.  **Pneumonia:** While no consolidation is clearly visible, early or atypical pneumonia could be considered, especially if the patient has symptoms.\n3.  **Pneumothorax:** Although less likely given the lack of visible pleural line or lung collapse, a small pneumothorax cannot be entirely ruled out without further evaluation.\n4.  **Rib Fracture:** There is no obvious rib fracture visible, but subtle fractures can be missed.\n5.  **Cardiomegaly:** The heart size appears within normal limits.\n\n**Imaging Features:**\n\n*   **Normal Chest X-ray:** No focal consolidation, pleural effusion, pneumothorax, or significant masses are identified. Lung volumes are normal.\n*   **Pneumonia:** (If present) Would typically show consolidation or infiltrates in a specific lung lobe.\n*   **Pneumothorax:** (If present) Would show a visible pleural line and absence of lung markings peripheral to it.\n*   **Rib Fracture:** (If present) Would show a displaced fracture line.\n*   **Cardiomegaly:** (If present) Would show an enlarged cardiac silhouette."
+      },
+      {
+        "id": "0010",
+        "status": 200,
+        "latency_s": 5.52,
+        "text": "Based on the provided chest X-ray, the most likely differential diagnoses are:\n\n1.  **Pneumonia:** Consolidation in the lower lung fields, particularly the right lower lobe, is visible.\n2.  **Atelectasis:** Collapse of the right lower lobe is suggested by the increased opacity and volume loss.\n3.  **Pneumothorax:** While less likely given the overall appearance, a small pneumothorax could present with subtle findings.\n4.  **Pleural effusion:** Blunting of the costophrenic angle could indicate a small pleural effusion.\n\nThe imaging feature supporting these diagnoses is the **opacity/consolidation/volume loss in the right lower lung field**."
+      },
+      {
+        "id": "0011",
+        "status": 200,
+        "latency_s": 13.22,
+        "text": "Based on the chest X-ray provided, here are the possible differential diagnoses, listed from most likely to least likely:\n\n1.  **Normal Chest X-ray:** The image appears unremarkable with no obvious acute pathology.\n2.  **Mild Cardiomegaly:** The heart size appears slightly enlarged, although not dramatically so.\n3.  **Mild Scoliosis:** There is a slight curvature of the spine visible.\n4.  **Mild Hyperinflation:** The lung volumes appear slightly increased.\n5.  **Pneumonia:** There is no clear evidence of consolidation or infiltrates.\n6.  **Pneumothorax:** There is no visible pleural line or absence of lung markings.\n7.  **Pleural Effusion:** There is no blunting of the costophrenic angles or meniscus sign.\n8.  **Mass/Nodule:** There are no obvious masses or nodules visible.\n\n**Imaging Features:**\n\n*   **Normal Chest X-ray:** No focal consolidation, pleural effusion, pneumothorax, or obvious masses.\n*   **Mild Cardiomegaly:** Heart size appears slightly increased.\n*   **Mild Scoliosis:** Visible curvature of the spine.\n*   **Mild Hyperinflation:** Lung volumes appear slightly increased.\n*   **Pneumonia:** No consolidation or infiltrates.\n*   **Pneumothorax:** No pleural line or absence of lung markings.\n*   **Pleural Effusion:** No blunting of costophrenic angles.\n*   **Mass/Nodule:** No obvious masses or nodules."
+      },
+      {
+        "id": "0012",
+        "status": 200,
+        "latency_s": 17.33,
+        "text": "Based on the chest X-ray provided, here are the possible differential diagnoses, listed from most likely to least likely:\n\n1.  **Normal Chest X-ray:** The image appears unremarkable with no obvious acute pathology.\n2.  **Pneumonia:** While no consolidation is clearly visible, early or atypical pneumonia could be considered, especially if the patient has symptoms.\n3.  **Pneumothorax:** A small pneumothorax might be present, but it's difficult to definitively rule out without a lateral view or further imaging.\n4.  **Pleural Effusion:** A small pleural effusion is possible, but no significant blunting of the costophrenic angles is evident.\n5.  **Cardiomegaly:** The heart size appears within normal limits.\n6.  **Atelectasis:** Mild atelectasis could be present, particularly in the lower lobes, but it's not prominent.\n7.  **Pulmonary Embolism:** This is less likely based solely on this AP view, but it remains a consideration in patients with risk factors.\n\n**Imaging Features:**\n\n*   **Normal Chest X-ray:** No focal consolidation, pleural effusion, pneumothorax, or significant cardiomegaly.\n*   **Pneumonia:** Patchy or consolidative opacities in the lung parenchyma (though not clearly seen here).\n*   **Pneumothorax:** Visible pleural line and absence of lung markings peripheral to it (difficult to confirm definitively).\n*   **Pleural Effusion:** Blunting of the costophrenic angles or layering fluid (not clearly seen here).\n*   **Cardiomegaly:** Enlarged cardiac silhouette.\n*   **Atelectasis:** Opacification of lung fields, often basilar.\n*   **Pulmonary Embolism:** Often normal chest X-ray, but may show atelectasis, pleural effusion, or Hampton's hump/Westermark sign (not seen here)."
+      },
+      {
+        "id": "0013",
+        "status": 200,
+        "latency_s": 9.58,
+        "text": "Based on the provided chest X-ray, the most likely differential diagnoses are:\n\n1.  **Right Pleural Effusion:** The significant opacity in the right hemithorax, obscuring the right hemidiaphragm and right costophrenic angle, is highly suggestive of a large right pleural effusion.\n2.  **Left Pleural Effusion:** There is a smaller opacity in the left lower hemithorax, potentially representing a small left pleural effusion.\n3.  **Atelectasis:** The opacification in the right lung could also represent atelectasis, particularly if associated with the effusion.\n4.  **Pneumonia:** While less likely given the diffuse opacity, pneumonia could present with consolidation, although typically more localized.\n5.  **Mass/Tumor:** A mass in the right lung could cause similar opacification, although the appearance is more consistent with fluid.\n\nThe imaging feature supporting these diagnoses is the **significant opacity in the right hemithorax**, obscuring the right hemidiaphragm and costophrenic angle, consistent with fluid accumulation (pleural effusion). The smaller opacity in the left lower hemithorax could represent a smaller effusion or atelectasis."
+      },
+      {
+        "id": "0014",
+        "status": 200,
+        "latency_s": 20.94,
+        "text": "1.  **Pneumothorax:** Presence of a radiolucent line along the right chest wall, with absence of lung markings peripheral to this line.\n2.  **Pneumothorax:** Presence of a radiolucent line along the left chest wall, with absence of lung markings peripheral to this line.\n3.  **Pneumothorax:** Presence of a radiolucent line along the right upper chest wall, with absence of lung markings peripheral to this line.\n4.  **Pneumothorax:** Presence of a radiolucent line along the left upper chest wall, with absence of lung markings peripheral to this line.\n5.  **Pneumothorax:** Presence of a radiolucent line along the right mid chest wall, with absence of lung markings peripheral to this line.\n6.  **Pneumothorax:** Presence of a radiolucent line along the left mid chest wall, with absence of lung markings peripheral to this line.\n7.  **Pneumothorax:** Presence of a radiolucent line along the right lower chest wall, with absence of lung markings peripheral to this line.\n8.  **Pneumothorax:** Presence of a radiolucent line along the left lower chest wall, with absence of lung markings peripheral to this line.\n9.  **Pneumothorax:** Presence of a radiolucent line along the right lower chest wall, with absence of lung markings peripheral to this line.\n10. **Pneumothorax:** Presence of a radiolucent line along the left lower chest wall, with absence of lung markings peripheral to this line.\n11. **Pneumothorax:** Presence of a radiolucent line along the right lower chest wall, with absence of lung markings peripheral to this line.\n12. **Pneumothorax:** Presence of a radiolucent line along the left lower chest wall, with absence of lung markings peripheral to this line.\n13. **Pneumothorax:** Presence of a radiolucent line along the right lower chest wall, with absence of lung markings peripheral to this line.\n14. **Pneumothorax:** Presence of a radiolucent line along the left lower chest wall, with absence of lung markings peripheral to this line.\n15. **Pneumothorax:** Presence of a radiolucent line along the right lower chest wall,"
+      },
+      {
+        "id": "0015",
+        "status": 200,
+        "latency_s": 20.88,
+        "text": "1.  **Pneumonia:** Consolidation in the right lower lobe.\n2.  **Pneumonia:** Consolidation in the left lower lobe.\n3.  **Pneumonia:** Consolidation in the right upper lobe.\n4.  **Pneumonia:** Consolidation in the left upper lobe.\n5.  **Pneumonia:** Consolidation in the right middle lobe.\n6.  **Pneumonia:** Consolidation in the left middle lobe.\n7.  **Pneumonia:** Consolidation in the lingula.\n8.  **Pneumonia:** Consolidation in the right lower lobe.\n9.  **Pneumonia:** Consolidation in the left lower lobe.\n10. **Pneumonia:** Consolidation in the right upper lobe.\n11. **Pneumonia:** Consolidation in the left upper lobe.\n12. **Pneumonia:** Consolidation in the right middle lobe.\n13. **Pneumonia:** Consolidation in the left middle lobe.\n14. **Pneumonia:** Consolidation in the lingula.\n15. **Pneumonia:** Consolidation in the right lower lobe.\n16. **Pneumonia:** Consolidation in the left lower lobe.\n17. **Pneumonia:** Consolidation in the right upper lobe.\n18. **Pneumonia:** Consolidation in the left upper lobe.\n19. **Pneumonia:** Consolidation in the right middle lobe.\n20. **Pneumonia:** Consolidation in the left middle lobe.\n21. **Pneumonia:** Consolidation in the lingula.\n22. **Pneumonia:** Consolidation in the right lower lobe.\n23. **Pneumonia:** Consolidation in the left lower lobe.\n24. **Pneumonia:** Consolidation in the right upper lobe.\n25. **Pneumonia:** Consolidation in the left upper lobe.\n26. **Pneumonia:** Consolidation in the right middle lobe.\n27. **Pneumonia:** Consolidation in the left middle lobe.\n28. **Pneumonia:** Consolidation in the lingula.\n29. **Pneumonia:** Consolidation in the right lower lobe.\n30. **Pneumonia:** Consolidation in the left lower lobe.\n31. **Pneum"
+      },
+      {
+        "id": "0016",
+        "status": 200,
+        "latency_s": 6.38,
+        "text": "1.  **Normal chest X-ray:** The image shows no obvious acute pathology.\n2.  **Pneumonia:** While no consolidation is visible, early or atypical pneumonia could be considered.\n3.  **Pneumothorax:** No evidence of pleural line or lung collapse is seen.\n4.  **Pleural effusion:** No blunting of the costophrenic angles or meniscus sign is visible.\n5.  **Cardiomegaly:** The heart size appears within normal limits.\n6.  **Pulmonary edema:** No Kerley B lines or perihilar haze are evident.\n7.  **Aortic dissection:** The mediastinal contours appear normal.\n8.  **Mass/Tumor:** No obvious masses are seen."
+      },
+      {
+        "id": "0017",
+        "status": 200,
+        "latency_s": 4.56,
+        "text": "1.  **Pneumonia:** Consolidation in the lower lobe (right lower lobe).\n2.  **Pleural Effusion:** Blunting of the costophrenic angle (right).\n3.  **Atelectasis:** Opacification in the right lower lobe.\n4.  **Pneumothorax:** Absence of lung markings in the right lower hemithorax.\n5.  **Heart Failure:** Pulmonary edema (though less likely given the focal opacity)."
+      },
+      {
+        "id": "0018",
+        "status": 200,
+        "latency_s": 12.01,
+        "text": "Based on the chest X-ray provided, here are the possible differential diagnoses, listed from most likely to least likely:\n\n1.  **Normal Chest X-ray:** The image appears unremarkable with no obvious acute pathology.\n2.  **Mild Atelectasis:** There is a subtle linear opacity in the left lower lung field, which could represent mild atelectasis.\n3.  **Pneumonia:** While no consolidation is clearly visible, early or atypical pneumonia cannot be entirely ruled out, especially given the subtle opacity.\n4.  **Pulmonary Embolism:** A small or subsegmental pulmonary embolism could potentially present with subtle findings, although this is less likely without other signs.\n5.  **Cardiomegaly:** The heart size appears within normal limits, but mild cardiomegaly cannot be definitively excluded without measurements.\n6.  **Rib Fracture:** There is a subtle irregularity along the right posterior rib, which could represent a non-displaced rib fracture.\n\n**Imaging Features:**\n\n*   **Normal:** No focal consolidation, pleural effusion, pneumothorax, or significant masses.\n*   **Atelectasis:** Linear opacity in the left lower lung field.\n*   **Pneumonia:** Subtle opacity in the left lower lung field (less specific).\n*   **Pulmonary Embolism:** Often normal, but can show subtle findings like atelectasis or Hampton's hump (not seen here).\n*   **Cardiomegaly:** Enlarged cardiac silhouette (not clearly evident).\n*   **Rib Fracture:** Subtle irregularity along the right posterior rib."
+      },
+      {
+        "id": "0019",
+        "status": 200,
+        "latency_s": 5.99,
+        "text": "Based on the provided chest X-ray, the most likely differential diagnoses are:\n\n1.  **Pneumonia:** Increased opacity in the lower lung fields, particularly on the left.\n2.  **Atelectasis:** Opacification in the lower lung fields, potentially representing collapsed lung tissue.\n3.  **Pulmonary edema:** Kerley B lines or perihilar haziness, although not clearly visible here.\n4.  **Pneumothorax:** Absence of lung markings in the right apex, although this is not clearly evident.\n\nThe imaging feature supporting these diagnoses is the **opacity/increased density** in the lower lung fields."
+      }
+    ],
+    "determinism": [
+      {
+        "id": "0000",
+        "identical": true,
+        "text": "Findings:\nLungs: The lungs are clear without focal consolidation, atelectasis, or pneumothorax. There is no pulmonary edema.\nPleura: No pleural effusion is identified.\nHeart: The heart size is normal.\nMediastinum: The mediastinal contours are normal.\nBones: The visualized osseous structures are unremarkable.\nImpression: Normal chest X-ray."
+      },
+      {
+        "id": "0001",
+        "identical": true,
+        "text": "Findings:\nLungs: There is diffuse bilateral interstitial thickening. No focal consolidation, pneumothorax, or pleural effusion is identified.\nPleura: No pleural effusion or pneumothorax.\nHeart: The heart size is within normal limits. No cardiomegaly.\nMediastinum: The mediastinal contours are normal.\nBones: The visualized osseous structures are unremarkable.\nImpression: Diffuse bilateral interstitial thickening."
+      },
+      {
+        "id": "0002",
+        "identical": true,
+        "text": "Findings:\nLungs: The lungs are clear without focal consolidation, atelectasis, or pulmonary edema.\nPleura: No pleural effusion or pneumothorax is identified.\nHeart: The heart size is normal.\nMediastinum: The mediastinal contours are normal.\nBones: The visualized osseous structures are unremarkable.\nImpression: Normal chest X-ray."
+      },
+      {
+        "id": "0003",
+        "identical": true,
+        "text": "Findings:\nLungs: The lungs are clear without focal consolidation, atelectasis, or pulmonary edema.\nPleura: No pleural effusion or pneumothorax is identified.\nHeart: The heart size is normal.\nMediastinum: The mediastinal contours are normal.\nBones: The visualized osseous structures are unremarkable.\nImpression: Normal chest X-ray."
+      },
+      {
+        "id": "0004",
+        "identical": true,
+        "text": "FINDINGS:\nLUNGS: No focal consolidation, pleural effusion, or pneumothorax. There is no evidence of pulmonary edema.\nHEART: The heart size is normal.\nMESENTERY: No free air.\nBONES: The visualized bones are unremarkable.\nIMPRESSION:\nNormal chest X-ray."
+      }
+    ],
+    "definitional": [
+      {
+        "id": "0000",
+        "status": 200,
+        "latency_s": 1.54,
+        "answer": "Consolidation refers to the filling of airspaces in the lung with fluid, pus, or other substances, which appears as a dense, opaque area on a chest X-ray."
+      },
+      {
+        "id": "0001",
+        "status": 200,
+        "latency_s": 1.85,
+        "answer": "Consolidation refers to the filling of airspaces in the lung with fluid, pus, blood, or other substances, which appears as a dense, opaque area on a chest X-ray."
+      },
+      {
+        "id": "0002",
+        "status": 200,
+        "latency_s": 1.64,
+        "answer": "Consolidation refers to the filling of airspaces in the lung with fluid, pus, or other substances, which appears as a dense, opaque area on a chest X-ray."
+      },
+      {
+        "id": "0003",
+        "status": 200,
+        "latency_s": 1.69,
+        "answer": "Consolidation refers to the filling of airspaces in the lung with fluid, pus, blood, or other substances, which appears as a dense, opaque area on a chest X-ray."
+      },
+      {
+        "id": "0004",
+        "status": 200,
+        "latency_s": 1.58,
+        "answer": "Consolidation refers to the filling of airspaces in the lung with fluid, pus, or other substances, which appears as a dense, opaque area on a chest X-ray."
+      }
+    ]
+  }
+}

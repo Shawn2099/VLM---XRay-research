@@ -1,0 +1,12 @@
+{
+  "results": "test\\results\\report_t0\\results.jsonl",
+  "n": 120,
+  "bleu4": 3.42,
+  "rougeL": 0.199,
+  "radgraph": {
+    "RG_E": 0.2533,
+    "RG_ER": 0.2222,
+    "RG_Complete": 0.1699,
+    "model_type": "radgraph"
+  }
+}

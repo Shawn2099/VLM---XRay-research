@@ -1,0 +1,201 @@
+{
+  "dataset": "OpenI / IU Chest X-ray (HF mirror)",
+  "n": 5,
+  "ok": 5,
+  "errors": {},
+  "temperature": 0.0,
+  "top_p": 1.0,
+  "latency_s": {
+    "mean": 1.822,
+    "median": 1.725,
+    "p95": 2.503,
+    "max": 2.503
+  },
+  "report_words": {
+    "mean": 35.2,
+    "min": 26,
+    "max": 54
+  },
+  "repetition_8gram": {
+    "mean": 0.0,
+    "max": 0.0
+  },
+  "unigram_f1": 0.1771,
+  "macro_f1": 0.0667,
+  "micro": {
+    "precision": 0.167,
+    "recall": 0.2
+  },
+  "labels": {
+    "atelectasis": {
+      "reference_positive": 1,
+      "predicted_positive": 1,
+      "tp": 0,
+      "fp": 1,
+      "fn": 1,
+      "tn": 3,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "cardiomegaly": {
+      "reference_positive": 0,
+      "predicted_positive": 1,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0,
+      "tn": 4,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "consolidation": {
+      "reference_positive": 1,
+      "predicted_positive": 2,
+      "tp": 1,
+      "fp": 1,
+      "fn": 0,
+      "tn": 3,
+      "precision": 0.5,
+      "recall": 1.0,
+      "f1": 0.667
+    },
+    "edema": {
+      "reference_positive": 0,
+      "predicted_positive": 0,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "tn": 5,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "effusion": {
+      "reference_positive": 0,
+      "predicted_positive": 1,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0,
+      "tn": 4,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "pneumonia": {
+      "reference_positive": 0,
+      "predicted_positive": 0,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "tn": 5,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "pneumothorax": {
+      "reference_positive": 0,
+      "predicted_positive": 0,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "tn": 5,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "nodule_mass": {
+      "reference_positive": 1,
+      "predicted_positive": 0,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1,
+      "tn": 4,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "fracture": {
+      "reference_positive": 0,
+      "predicted_positive": 0,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "tn": 5,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "normal": {
+      "reference_positive": 2,
+      "predicted_positive": 1,
+      "tp": 0,
+      "fp": 1,
+      "fn": 2,
+      "tn": 2,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    }
+  },
+  "examples": {
+    "false_positive": [
+      {
+        "id": "0001",
+        "label": "atelectasis",
+        "report": "The chest radiograph shows a small left pleural effusion. There is also mild left lung base atelectasis and trace right pleural effusion. No pulmonary edema or pneumonia is seen. The cardiomediastinal silhouette is normal in size.",
+        "reference": "interstitial markings are diffusely prominent throughout both lungs heart size is normal pulmonary normal"
+      },
+      {
+        "id": "0000",
+        "label": "cardiomegaly",
+        "report": "The radiologic report reveals a consolidation in the right lung. There is also an observation of mild cardiomegaly. The left lung appears to be grossly clear.",
+        "reference": "there is increased opacity within the right upper lobe with possible mass and associated area of atelectasis or focal consolidation the cardiac silhouette is within normal limits opacity in the left midlung overlying the posterior left th rib may represent focal airspace disease no pleural effusion "
+      },
+      {
+        "id": "0004",
+        "label": "consolidation",
+        "report": "The chest radiograph reveals a region of peribronchial infiltration in the left lower lobe. The lungs elsewhere are unremarkable with no evidence of cardiac decompensation. There is central adenopathy, predominantly in the left hilus and likely in the right lower paratracheal station. A region of consolidation is also noted in the right upper lobe.",
+        "reference": "heart size and mediastinal contours are normal in appearance no consolidative airspace opacities no radiographic evidence of pleural effusion or pneumothorax visualized osseous structures appear intact"
+      },
+      {
+        "id": "0001",
+        "label": "effusion",
+        "report": "The chest radiograph shows a small left pleural effusion. There is also mild left lung base atelectasis and trace right pleural effusion. No pulmonary edema or pneumonia is seen. The cardiomediastinal silhouette is normal in size.",
+        "reference": "interstitial markings are diffusely prominent throughout both lungs heart size is normal pulmonary normal"
+      },
+      {
+        "id": "0004",
+        "label": "normal",
+        "report": "The chest radiograph reveals a region of peribronchial infiltration in the left lower lobe. The lungs elsewhere are unremarkable with no evidence of cardiac decompensation. There is central adenopathy, predominantly in the left hilus and likely in the right lower paratracheal station. A region of consolidation is also noted in the right upper lobe.",
+        "reference": "heart size and mediastinal contours are normal in appearance no consolidative airspace opacities no radiographic evidence of pleural effusion or pneumothorax visualized osseous structures appear intact"
+      }
+    ],
+    "false_negative": [
+      {
+        "id": "0000",
+        "label": "atelectasis",
+        "report": "The radiologic report reveals a consolidation in the right lung. There is also an observation of mild cardiomegaly. The left lung appears to be grossly clear.",
+        "reference": "there is increased opacity within the right upper lobe with possible mass and associated area of atelectasis or focal consolidation the cardiac silhouette is within normal limits opacity in the left midlung overlying the posterior left th rib may represent focal airspace disease no pleural effusion "
+      },
+      {
+        "id": "0000",
+        "label": "nodule_mass",
+        "report": "The radiologic report reveals a consolidation in the right lung. There is also an observation of mild cardiomegaly. The left lung appears to be grossly clear.",
+        "reference": "there is increased opacity within the right upper lobe with possible mass and associated area of atelectasis or focal consolidation the cardiac silhouette is within normal limits opacity in the left midlung overlying the posterior left th rib may represent focal airspace disease no pleural effusion "
+      },
+      {
+        "id": "0000",
+        "label": "normal",
+        "report": "The radiologic report reveals a consolidation in the right lung. There is also an observation of mild cardiomegaly. The left lung appears to be grossly clear.",
+        "reference": "there is increased opacity within the right upper lobe with possible mass and associated area of atelectasis or focal consolidation the cardiac silhouette is within normal limits opacity in the left midlung overlying the posterior left th rib may represent focal airspace disease no pleural effusion "
+      },
+      {
+        "id": "0002",
+        "label": "normal",
+        "report": "The chest x-ray shows clear lungs without any focal consolidation, pleural effusion, or pneumothorax. The heart size is normal, and the mediastinal silhouette and hilar contours are also normal.",
+        "reference": "cardiac and mediastinal contours are within normal limits the lungs are clear bony structures are intact"
+      }
+    ]
+  }
+}

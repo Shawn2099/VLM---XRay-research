@@ -1,0 +1,164 @@
+{
+  "dataset": "OpenI / IU Chest X-ray (HF mirror)",
+  "n": 1,
+  "ok": 1,
+  "errors": {},
+  "temperature": 0.0,
+  "top_p": 1.0,
+  "latency_s": {
+    "mean": 3.721,
+    "median": 3.721,
+    "p95": 3.721,
+    "max": 3.721
+  },
+  "report_words": {
+    "mean": 46,
+    "min": 46,
+    "max": 46
+  },
+  "repetition_8gram": {
+    "mean": 0.0,
+    "max": 0.0
+  },
+  "unigram_f1": 0.2,
+  "macro_f1": 0.1,
+  "micro": {
+    "precision": 1.0,
+    "recall": 0.25
+  },
+  "labels": {
+    "atelectasis": {
+      "reference_positive": 1,
+      "predicted_positive": 0,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1,
+      "tn": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "cardiomegaly": {
+      "reference_positive": 0,
+      "predicted_positive": 0,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "tn": 1,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "consolidation": {
+      "reference_positive": 1,
+      "predicted_positive": 0,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1,
+      "tn": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "edema": {
+      "reference_positive": 0,
+      "predicted_positive": 0,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "tn": 1,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "effusion": {
+      "reference_positive": 0,
+      "predicted_positive": 0,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "tn": 1,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "pneumonia": {
+      "reference_positive": 0,
+      "predicted_positive": 0,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "tn": 1,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "pneumothorax": {
+      "reference_positive": 0,
+      "predicted_positive": 0,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "tn": 1,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "nodule_mass": {
+      "reference_positive": 1,
+      "predicted_positive": 0,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1,
+      "tn": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "fracture": {
+      "reference_positive": 0,
+      "predicted_positive": 0,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "tn": 1,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "normal": {
+      "reference_positive": 1,
+      "predicted_positive": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "tn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    }
+  },
+  "examples": {
+    "false_positive": [],
+    "false_negative": [
+      {
+        "id": "0000",
+        "label": "atelectasis",
+        "report": "Findings:\nLungs: The lungs are clear without focal consolidation, atelectasis, or pneumothorax. There is no pulmonary edema.\nPleura: No pleural effusion is identified.\nHeart: The heart size is normal.\nMediastinum: The mediastinal contours are normal.\nBones: The visualized osseous structures are unremarkable.\nImpression: Normal chest X-ray.",
+        "reference": "there is increased opacity within the right upper lobe with possible mass and associated area of atelectasis or focal consolidation the cardiac silhouette is within normal limits opacity in the left midlung overlying the posterior left th rib may represent focal airspace disease no pleural effusion "
+      },
+      {
+        "id": "0000",
+        "label": "consolidation",
+        "report": "Findings:\nLungs: The lungs are clear without focal consolidation, atelectasis, or pneumothorax. There is no pulmonary edema.\nPleura: No pleural effusion is identified.\nHeart: The heart size is normal.\nMediastinum: The mediastinal contours are normal.\nBones: The visualized osseous structures are unremarkable.\nImpression: Normal chest X-ray.",
+        "reference": "there is increased opacity within the right upper lobe with possible mass and associated area of atelectasis or focal consolidation the cardiac silhouette is within normal limits opacity in the left midlung overlying the posterior left th rib may represent focal airspace disease no pleural effusion "
+      },
+      {
+        "id": "0000",
+        "label": "nodule_mass",
+        "report": "Findings:\nLungs: The lungs are clear without focal consolidation, atelectasis, or pneumothorax. There is no pulmonary edema.\nPleura: No pleural effusion is identified.\nHeart: The heart size is normal.\nMediastinum: The mediastinal contours are normal.\nBones: The visualized osseous structures are unremarkable.\nImpression: Normal chest X-ray.",
+        "reference": "there is increased opacity within the right upper lobe with possible mass and associated area of atelectasis or focal consolidation the cardiac silhouette is within normal limits opacity in the left midlung overlying the posterior left th rib may represent focal airspace disease no pleural effusion "
+      }
+    ]
+  }
+}

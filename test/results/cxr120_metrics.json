@@ -1,0 +1,144 @@
+{
+  "results": "test\\results\\report_t0\\results.jsonl",
+  "n": 120,
+  "bleu4": 3.42,
+  "rougeL": 0.199,
+  "chexbert": {
+    "micro_f1": 0.2558,
+    "macro_f1": 0.1425,
+    "labels": {
+      "Enlarged Cardiomediastinum": {
+        "reference_positive": 12,
+        "predicted_positive": 9,
+        "tp": 2,
+        "fp": 7,
+        "fn": 10,
+        "tn": 101,
+        "f1": 0.19
+      },
+      "Cardiomegaly": {
+        "reference_positive": 22,
+        "predicted_positive": 42,
+        "tp": 15,
+        "fp": 27,
+        "fn": 7,
+        "tn": 71,
+        "f1": 0.469
+      },
+      "Lung Opacity": {
+        "reference_positive": 27,
+        "predicted_positive": 23,
+        "tp": 4,
+        "fp": 19,
+        "fn": 23,
+        "tn": 74,
+        "f1": 0.16
+      },
+      "Lung Lesion": {
+        "reference_positive": 4,
+        "predicted_positive": 5,
+        "tp": 1,
+        "fp": 4,
+        "fn": 3,
+        "tn": 112,
+        "f1": 0.222
+      },
+      "Edema": {
+        "reference_positive": 3,
+        "predicted_positive": 11,
+        "tp": 1,
+        "fp": 10,
+        "fn": 2,
+        "tn": 107,
+        "f1": 0.143
+      },
+      "Consolidation": {
+        "reference_positive": 1,
+        "predicted_positive": 16,
+        "tp": 1,
+        "fp": 15,
+        "fn": 0,
+        "tn": 104,
+        "f1": 0.118
+      },
+      "Pneumonia": {
+        "reference_positive": 1,
+        "predicted_positive": 18,
+        "tp": 0,
+        "fp": 18,
+        "fn": 1,
+        "tn": 101,
+        "f1": 0.0
+      },
+      "Atelectasis": {
+        "reference_positive": 14,
+        "predicted_positive": 23,
+        "tp": 5,
+        "fp": 18,
+        "fn": 9,
+        "tn": 88,
+        "f1": 0.27
+      },
+      "Pneumothorax": {
+        "reference_positive": 4,
+        "predicted_positive": 3,
+        "tp": 0,
+        "fp": 3,
+        "fn": 4,
+        "tn": 113,
+        "f1": 0.0
+      },
+      "Pleural Effusion": {
+        "reference_positive": 4,
+        "predicted_positive": 17,
+        "tp": 0,
+        "fp": 17,
+        "fn": 4,
+        "tn": 99,
+        "f1": 0.0
+      },
+      "Pleural Other": {
+        "reference_positive": 1,
+        "predicted_positive": 0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 1,
+        "tn": 119,
+        "f1": 0.0
+      },
+      "Fracture": {
+        "reference_positive": 3,
+        "predicted_positive": 0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 3,
+        "tn": 117,
+        "f1": 0.0
+      },
+      "Support Devices": {
+        "reference_positive": 5,
+        "predicted_positive": 5,
+        "tp": 0,
+        "fp": 5,
+        "fn": 5,
+        "tn": 110,
+        "f1": 0.0
+      },
+      "No Finding": {
+        "reference_positive": 32,
+        "predicted_positive": 39,
+        "tp": 15,
+        "fp": 24,
+        "fn": 17,
+        "tn": 64,
+        "f1": 0.423
+      }
+    }
+  },
+  "radgraph": {
+    "RG_E": 0.2533,
+    "RG_ER": 0.2222,
+    "RG_Complete": 0.1699,
+    "model_type": "radgraph"
+  }
+}

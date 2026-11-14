@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MedGemma 1.5 4B — chest X-ray reports</title>
+<style>
+  :root {
+    --bg: #0b1118;
+    --panel: #121b26;
+    --panel-2: #0e1620;
+    --line: #223041;
+    --text: #e6edf5;
+    --muted: #8fa3b8;
+    --accent: #2dd4bf;
+    --accent-2: #14b8a6;
+    --danger: #f87171;
+    --warn: #fbbf24;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: radial-gradient(1200px 600px at 20% -10%, #16303a 0%, var(--bg) 55%);
+    color: var(--text);
+    font: 15px/1.5 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    min-height: 100vh;
+  }
+  header {
+    display: flex; align-items: center; gap: 14px;
+    padding: 18px 28px; border-bottom: 1px solid var(--line);
+    background: rgba(11, 17, 24, .8); backdrop-filter: blur(8px);
+    position: sticky; top: 0; z-index: 5;
+  }
+  .logo {
+    width: 34px; height: 34px; border-radius: 9px;
+    background: linear-gradient(135deg, var(--accent), #0ea5e9);
+    display: grid; place-items: center; color: #04222a; font-weight: 800;
+  }
+  h1 { font-size: 17px; margin: 0; letter-spacing: .2px; }
+  h1 span { color: var(--muted); font-weight: 500; }
+  .status {
+    margin-left: auto; display: flex; align-items: center; gap: 8px;
+    color: var(--muted); font-size: 13px;
+  }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--warn); }
+  .dot.ok { background: var(--accent); box-shadow: 0 0 10px var(--accent); }
+  .dot.err { background: var(--danger); }
+
+  main {
+    max-width: 1240px; margin: 28px auto; padding: 0 24px;
+    display: grid; grid-template-columns: minmax(320px, 1fr) minmax(380px, 1.15fr);
+    gap: 22px;
+  }
+  @media (max-width: 900px) { main { grid-template-columns: 1fr; } }
+
+  .panel {
+    background: linear-gradient(180deg, var(--panel), var(--panel-2));
+    border: 1px solid var(--line); border-radius: 14px; overflow: hidden;
+  }
+  .panel-head {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 18px; border-bottom: 1px solid var(--line);
+    font-size: 12px; text-transform: uppercase; letter-spacing: .12em; color: var(--muted);
+  }
+  #latency { text-transform: none; letter-spacing: 0; }
+  .panel-body { padding: 18px; }
+
+  .drop {
+    border: 1.5px dashed #2b3d51; border-radius: 12px; padding: 26px 18px;
+    text-align: center; cursor: pointer; transition: .15s ease;
+    background: rgba(45, 212, 191, .02);
+  }
+  .drop:hover, .drop.over { border-color: var(--accent); background: rgba(45, 212, 191, .07); }
+  .drop strong { display: block; margin-bottom: 4px; }
+  .drop small { color: var(--muted); }
+  input[type=file] { display: none; }
+
+  .preview { margin-top: 14px; display: none; }
+  .preview img {
+    width: 100%; max-height: 380px; object-fit: contain;
+    background: #000; border-radius: 10px; border: 1px solid var(--line);
+  }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .chip {
+    font-size: 11px; color: #b8c7d8; border: 1px solid var(--line);
+    background: #0d1722; border-radius: 999px; padding: 3px 9px;
+  }
+  .chip b { color: var(--accent); font-weight: 600; }
+  .chip.warn { border-color: rgba(251, 191, 36, .5); color: var(--warn); }
+
+  .fileline {
+    margin-top: 12px; color: var(--muted); font-size: 13px;
+    display: flex; justify-content: space-between; gap: 10px;
+  }
+  .fileline button {
+    background: none; border: 0; color: var(--danger); cursor: pointer; font-size: 12px;
+  }
+
+  .modes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 14px; }
+  .mode {
+    border: 1px solid var(--line); background: #0d1722; color: var(--muted);
+    padding: 9px 8px; border-radius: 9px; cursor: pointer; font-size: 13px;
+  }
+  .mode.active { border-color: var(--accent); color: var(--accent); background: rgba(45,212,191,.08); }
+
+  textarea, input[type=password], input[type=number] {
+    width: 100%; background: #0a131c; color: var(--text);
+    border: 1px solid var(--line); border-radius: 9px; padding: 10px 12px;
+    font: inherit; outline: none;
+  }
+  textarea:focus, input:focus { border-color: var(--accent); }
+  textarea { min-height: 84px; resize: vertical; }
+
+  .row { display: flex; gap: 10px; margin-top: 12px; }
+  .row > * { flex: 1; }
+  label.small { display: block; color: var(--muted); font-size: 12px; margin: 12px 0 5px; }
+
+  .run {
+    width: 100%; margin-top: 16px; padding: 12px 16px; border: 0; border-radius: 10px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    color: #04222a; font-weight: 700; font-size: 15px; cursor: pointer;
+  }
+  .run:disabled { opacity: .55; cursor: wait; }
+
+  .result { white-space: pre-wrap; word-break: break-word; min-height: 180px; }
+  .result.empty { color: var(--muted); }
+  .result h3 { color: var(--accent); font-size: 13px; text-transform: uppercase; letter-spacing: .1em; margin: 0 0 10px; }
+  .meta { color: var(--muted); font-size: 12px; margin-top: 14px; display: flex; gap: 14px; }
+  .copy { background: none; border: 1px solid var(--line); color: var(--muted); border-radius: 8px; padding: 5px 10px; cursor: pointer; font-size: 12px; }
+  .copy:hover { border-color: var(--accent); color: var(--accent); }
+
+  .error {
+    display: none; margin-top: 12px; padding: 10px 12px; border-radius: 9px;
+    background: rgba(248, 113, 113, .1); border: 1px solid rgba(248, 113, 113, .35);
+    color: #fecaca; font-size: 13px;
+  }
+  .spinner {
+    width: 15px; height: 15px; border: 2px solid #04222a55; border-top-color: #04222a;
+    border-radius: 50%; display: inline-block; vertical-align: -2px; margin-right: 8px;
+    animation: spin .8s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .keybox { display: none; margin-top: 12px; }
+  footer {
+    max-width: 1240px; margin: 8px auto 40px; padding: 0 24px;
+    color: var(--muted); font-size: 12px;
+  }
+  /* code mode */
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">MG</div>
+  <h1>MedGemma 1.5 4B <span>· chest X-ray reporting</span></h1>
+  <div class="status"><span class="dot" id="dot"></span><span id="statusText">connecting…</span></div>
+</header>
+
+<main>
+  <section class="panel">
+    <div class="panel-head"><span>1 · Image</span><span id="dicomBadge"></span></div>
+    <div class="panel-body">
+      <div class="drop" id="drop">
+        <strong>Drop a chest X-ray here</strong>
+        <small>DICOM (.dcm), PNG or JPEG · max <span id="maxSize">40</span> MB</small>
+      </div>
+      <input type="file" id="file" accept=".dcm,.dicom,image/*">
+      <div class="preview" id="preview">
+        <img id="previewImg" alt="preview">
+        <div class="chips" id="chips"></div>
+      </div>
+      <div class="fileline" id="fileline" style="display:none">
+        <span id="filename"></span>
+        <button id="clear" type="button">remove</button>
+      </div>
+
+      <div class="keybox" id="keybox">
+        <label class="small" for="apikey">API key (required by this server)</label>
+        <input type="password" id="apikey" placeholder="paste X-API-Key" autocomplete="off">
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="panel-head"><span>2 · Task</span><span id="latency"></span></div>
+    <div class="panel-body">
+      <div class="modes">
+        <button class="mode active" data-mode="report" type="button">Report</button>
+        <button class="mode" data-mode="differential" type="button">Differential</button>
+        <button class="mode" data-mode="ask" type="button">Ask</button>
+      </div>
+
+      <div id="askWrap" style="display:none">
+        <label class="small" for="question">Question about this radiograph</label>
+        <textarea id="question" placeholder="e.g. Is there cardiomegaly? Is there a pleural effusion?"></textarea>
+      </div>
+
+      <div class="row">
+        <div>
+          <label class="small" for="temperature">Temperature</label>
+          <input type="number" id="temperature" value="0.2" min="0" max="2" step="0.1">
+        </div>
+        <div>
+          <label class="small" for="topp">Top-p</label>
+          <input type="number" id="topp" value="0.8" min="0.05" max="1" step="0.05">
+        </div>
+      </div>
+
+      <button class="run" id="run" type="button" disabled>Generate report</button>
+      <div class="error" id="error"></div>
+
+      <div style="margin-top:22px" class="panel-head" >
+        <span>3 · Output</span>
+        <button class="copy" id="copy" type="button" style="display:none">copy</button>
+      </div>
+      <div class="result empty" id="result">The generated text will appear here.</div>
+      <div class="meta" id="meta"></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  Research use only. MedGemma 1.5 can produce incorrect or incomplete reports
+  and must not be used for clinical decisions. Images are processed in memory
+  and are not stored by this service.
+</footer>
+
+<script>
+(() => {
+  "use strict";
+
+  const $ = (id) => document.getElementById(id);
+  const state = {
+    file: null,
+    mode: "report",
+    key: sessionStorage.getItem("cxr_key") || "",
+    config: { auth_required: false, max_upload_mb: 40 },
+    previewUrl: null,
+  };
+  let previewSeq = 0;
+
+  const authHeaders = () => state.key ? { "X-API-Key": state.key } : {};
+
+  function showError(message) {
+    const box = $("error");
+    box.textContent = message;
+    box.style.display = message ? "block" : "none";
+  }
+
+  function errorText(detail) {
+    if (!detail) return "request failed";
+    if (Array.isArray(detail)) {
+      return detail.map((item) => {
+        const where = Array.isArray(item.loc) ? item.loc.filter(Boolean).join(".") : "";
+        return (where ? where + ": " : "") + (item.msg || JSON.stringify(item));
+      }).join("; ");
+    }
+    return String(detail);
+  }
+
+  function setBusy(busy, label) {
+    const button = $("run");
+    button.disabled = busy || !state.file;
+    button.innerHTML = busy
+      ? '<span class="spinner"></span>' + (label || "Working…")
+      : buttonLabel();
+  }
+
+  function buttonLabel() {
+    return state.mode === "report" ? "Generate report"
+      : state.mode === "differential" ? "Generate differential"
+      : "Ask the model";
+  }
+
+  async function readJson(response) {
+    const text = await response.text();
+    try { return JSON.parse(text); } catch { return { detail: text }; }
+  }
+
+  async function loadConfig() {
+    try {
+      const response = await fetch("/config");
+      if (response.ok) {
+        state.config = await response.json();
+        $("keybox").style.display = state.config.auth_required ? "block" : "none";
+        $("apikey").value = state.key;
+        $("maxSize").textContent = state.config.max_upload_mb;
+      }
+    } catch { /* keep defaults */ }
+  }
+
+  async function checkHealth() {
+    try {
+      const response = await fetch("/health");
+      const data = await response.json();
+      const ok = response.ok && data.status === "ok";
+      $("dot").className = "dot " + (ok ? "ok" : "err");
+      $("statusText").textContent = ok
+        ? data.gpu + " · " + data.vram_allocated_gib + " GiB"
+        : (data.status || "unavailable");
+    } catch {
+      $("dot").className = "dot err";
+      $("statusText").textContent = "server unreachable";
+    }
+  }
+
+  function formatBytes(bytes) {
+    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(0) + " KB";
+    return (bytes / (1024 * 1024)).toFixed(1) + " MB";
+  }
+
+  function clearPreview() {
+    previewSeq += 1;
+    if (state.previewUrl) URL.revokeObjectURL(state.previewUrl);
+    state.previewUrl = null;
+    $("previewImg").removeAttribute("src");
+    $("preview").style.display = "none";
+    $("chips").innerHTML = "";
+    $("dicomBadge").textContent = "";
+  }
+
+  async function setFile(file) {
+    showError("");
+    if (file.size > state.config.max_upload_mb * 1024 * 1024) {
+      showError(`File is larger than ${state.config.max_upload_mb} MB.`);
+      return;
+    }
+    clearPreview();
+    const seq = ++previewSeq;
+    state.file = file;
+    $("fileline").style.display = "flex";
+    $("filename").textContent = file.name + " · " + formatBytes(file.size);
+    $("run").disabled = false;
+    $("meta").textContent = "";
+    $("latency").textContent = "";
+    $("result").className = "result empty";
+    $("result").textContent = "The generated text will appear here.";
+
+    const form = new FormData();
+    form.append("file", file);
+    try {
+      const response = await fetch("/preview", { method: "POST", headers: authHeaders(), body: form });
+      if (response.ok) {
+        const blob = await response.blob();
+        if (seq !== previewSeq) return;  // a newer file superseded this preview
+        state.previewUrl = URL.createObjectURL(blob);
+        $("previewImg").src = state.previewUrl;
+        $("preview").style.display = "block";
+
+        const h = response.headers;
+        const source = h.get("X-Image-Source") || "image";
+        $("dicomBadge").textContent = source === "dicom" ? "DICOM" : "";
+        const chips = [];
+        const add = (label, value) => { if (value) chips.push(`<span class="chip">${label} <b>${value}</b></span>`); };
+        add("source", source);
+        add("size", (h.get("X-Image-Width") || "?") + "×" + (h.get("X-Image-Height") || "?"));
+        add("modality", h.get("X-Dicom-Modality"));
+        add("photometric", h.get("X-Dicom-Photometric"));
+        add("bits", h.get("X-Dicom-BitsStored"));
+        add("window", h.get("X-Dicom-Window"));
+        const width = Number(h.get("X-Image-Width") || 0);
+        const height = Number(h.get("X-Image-Height") || 0);
+        if (width > height) {
+          chips.push('<span class="chip warn">landscape / likely lateral — model expects frontal</span>');
+        }
+        $("chips").innerHTML = chips.join("");
+      } else {
+        const data = await readJson(response);
+        if (seq !== previewSeq) return;
+        throw new Error(errorText(data.detail) || ("preview failed: HTTP " + response.status));
+      }
+    } catch (error) {
+      if (seq !== previewSeq) return;
+      showError(error.message);
+      if (String(error.message).includes("401")) {
+        $("keybox").style.display = "block";
+      }
+    }
+  }
+
+  async function runModel() {
+    if (!state.file || $("run").disabled) return;
+    if (state.mode === "ask" && !$("question").value.trim()) {
+      showError("Enter a question first.");
+      return;
+    }
+
+    const temperatureRaw = $("temperature").value.trim();
+    if (temperatureRaw === "") {
+      showError("Temperature is required.");
+      return;
+    }
+    const temperature = Number(temperatureRaw);
+    const topP = Number($("topp").value);
+    if (!Number.isFinite(temperature) || temperature < 0 || temperature > 2) {
+      showError("Temperature must be a number between 0 and 2.");
+      return;
+    }
+    if (!Number.isFinite(topP) || topP <= 0 || topP > 1) {
+      showError("Top-p must be a number greater than 0 and at most 1.");
+      return;
+    }
+
+    showError("");
+    $("result").className = "result empty";
+    $("result").textContent = "Running model…";
+    $("meta").textContent = "";
+    setBusy(true, state.mode === "ask" ? "Thinking…" : "Generating…");
+
+    const form = new FormData();
+    form.append("file", state.file);
+    form.append("temperature", String(temperature));
+    form.append("top_p", String(topP));
+    if (state.mode === "ask") form.append("question", $("question").value.trim());
+
+    try {
+      const response = await fetch("/" + state.mode, {
+        method: "POST", headers: authHeaders(), body: form,
+      });
+      const data = await readJson(response);
+      if (!response.ok) {
+        throw new Error(errorText(data.detail) || ("request failed: HTTP " + response.status));
+      }
+      const text = state.mode === "report" ? data.report
+        : state.mode === "differential" ? data.differential
+        : data.answer;
+      $("result").className = "result";
+      $("result").textContent = text;
+      $("latency").textContent = data.latency_s + " s";
+      $("meta").innerHTML = `<span>model: ${data.model}</span><span>source: ${data.source || ""}</span>`;
+      $("copy").style.display = "inline-block";
+    } catch (error) {
+      $("result").className = "result empty";
+      $("result").textContent = "No output.";
+      showError(error.message);
+      if (String(error.message).includes("401")) {
+        $("keybox").style.display = "block";
+      }
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  // --- events -------------------------------------------------------------
+  $("drop").addEventListener("click", () => $("file").click());
+  $("file").addEventListener("change", (event) => {
+    if (event.target.files.length) setFile(event.target.files[0]);
+  });
+  ["dragenter", "dragover"].forEach((name) => {
+    $("drop").addEventListener(name, (event) => {
+      event.preventDefault();
+      $("drop").classList.add("over");
+    });
+  });
+  ["dragleave", "drop"].forEach((name) => {
+    $("drop").addEventListener(name, (event) => {
+      event.preventDefault();
+      $("drop").classList.remove("over");
+    });
+  });
+  $("drop").addEventListener("drop", (event) => {
+    if (event.dataTransfer.files.length) setFile(event.dataTransfer.files[0]);
+  });
+
+  $("clear").addEventListener("click", () => {
+    state.file = null;
+    $("file").value = "";
+    clearPreview();
+    $("fileline").style.display = "none";
+    $("run").disabled = true;
+    $("result").className = "result empty";
+    $("result").textContent = "The generated text will appear here.";
+    $("meta").textContent = "";
+    $("latency").textContent = "";
+    $("copy").style.display = "none";
+  });
+
+  document.querySelectorAll(".mode").forEach((button) => {
+    button.addEventListener("click", () => {
+      state.mode = button.dataset.mode;
+      document.querySelectorAll(".mode").forEach((b) => b.classList.toggle("active", b === button));
+      $("askWrap").style.display = state.mode === "ask" ? "block" : "none";
+      $("run").innerHTML = buttonLabel();
+      $("run").disabled = !state.file;
+    });
+  });
+
+  $("run").addEventListener("click", runModel);
+  $("question").addEventListener("keydown", (event) => {
+    if ((event.ctrlKey || event.metaKey) && event.key === "Enter") runModel();
+  });
+  $("apikey").addEventListener("change", () => {
+    state.key = $("apikey").value.trim();
+    sessionStorage.setItem("cxr_key", state.key);
+    if (state.file) setFile(state.file);
+  });
+  $("apikey").addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      $("apikey").blur();
+    }
+  });
+  $("copy").addEventListener("click", async () => {
+    const text = $("result").textContent;
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(text);
+      } else {
+        const area = document.createElement("textarea");
+        area.value = text;
+        area.style.position = "fixed";
+        area.style.opacity = "0";
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand("copy");
+        area.remove();
+      }
+      $("copy").textContent = "copied";
+      setTimeout(() => { $("copy").textContent = "copy"; }, 1200);
+    } catch { /* ignore */ }
+  });
+
+  // Dropping a file outside the drop zone must not navigate away from the page.
+  ["dragover", "drop"].forEach((name) => {
+    document.addEventListener(name, (event) => {
+      if (!event.target.closest || !event.target.closest("#drop")) event.preventDefault();
+    });
+  });
+
+  // --- boot ---------------------------------------------------------------
+  loadConfig();
+  checkHealth();
+  setInterval(checkHealth, 30000);
+})();
+</script>
+</body>
+</html>

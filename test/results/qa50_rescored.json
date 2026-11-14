@@ -1,0 +1,920 @@
+{
+  "n_questions": 100,
+  "accuracy": 0.9,
+  "per_label": {
+    "cardiomegaly": {
+      "n": 50,
+      "accuracy": 0.94,
+      "reference_positive": 4,
+      "polarity_unknown": 0
+    },
+    "effusion": {
+      "n": 50,
+      "accuracy": 0.86,
+      "reference_positive": 6,
+      "polarity_unknown": 1
+    }
+  },
+  "rows": [
+    {
+      "id": "0000",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0000",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no appreciable pleural effusion.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0001",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0001",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No additional radiologic study is needed at this time.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0002",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no evidence of cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0002",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No additional radiologic study needed.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0003",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0003",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No additional radiologic study needed.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0004",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0004",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0005",
+      "label": "cardiomegaly",
+      "reference_positive": true,
+      "answer": "No, there is no evidence of cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": false
+    },
+    {
+      "id": "0005",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No additional radiologic study is needed at this time.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0006",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0006",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0007",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0007",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0008",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0008",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no appreciable pleural effusion.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0009",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0009",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0010",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0010",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0011",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0011",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0012",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0012",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No additional radiologic study is needed at this time.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0013",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0013",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0014",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0014",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0015",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0015",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0016",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0016",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No additional radiologic study is needed at this time.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0017",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0017",
+      "label": "effusion",
+      "reference_positive": true,
+      "answer": "No additional radiologic study is needed at this time.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": false
+    },
+    {
+      "id": "0018",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0018",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0019",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0019",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0020",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0020",
+      "label": "effusion",
+      "reference_positive": true,
+      "answer": "No, there is no pleural effusion.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": false
+    },
+    {
+      "id": "0021",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0021",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no evidence of a pleural effusion.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0022",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0022",
+      "label": "effusion",
+      "reference_positive": true,
+      "answer": "No, there is no pleural effusion.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": false
+    },
+    {
+      "id": "0023",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0023",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No additional radiologic study is needed at this time.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0024",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No additional radiologic study needed.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0024",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No additional radiologic study needed.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0025",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0025",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0026",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0026",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0027",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0027",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0028",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no evidence of cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0028",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0029",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0029",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No additional radiologic study is needed at this time.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0030",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no evidence of cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0030",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0031",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0031",
+      "label": "effusion",
+      "reference_positive": true,
+      "answer": "No additional radiologic study is needed at this time.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": false
+    },
+    {
+      "id": "0032",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0032",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No additional radiologic study is needed at this time.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0033",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No additional radiologic study is needed at this time.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0033",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No additional radiologic study is needed at this time.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0034",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0034",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No additional radiologic study is needed at this time.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0035",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0035",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No additional radiologic study needed.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0036",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0036",
+      "label": "effusion",
+      "reference_positive": true,
+      "answer": "No, there is no pleural effusion.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": false
+    },
+    {
+      "id": "0037",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0037",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No additional radiologic study is needed at this time.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0038",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no evidence of cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0038",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No additional radiologic study is needed at this time.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0039",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no evidence of cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0039",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0040",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0040",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0041",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0041",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No additional radiologic study is needed at this time.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0042",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0042",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "Further radiologic studies may be necessary to monitor the progression of the identified conditions and guide treatment decisions. A follow-up chest CT scan could provide more detailed information.",
+      "predicted_positive": true,
+      "status": 200,
+      "correct": false
+    },
+    {
+      "id": "0043",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0043",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0044",
+      "label": "cardiomegaly",
+      "reference_positive": true,
+      "answer": "Yes, there is cardiomegaly. Echocardiogram should be performed to further evaluate the heart.",
+      "predicted_positive": true,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0044",
+      "label": "effusion",
+      "reference_positive": true,
+      "answer": "Further radiologic studies are recommended to monitor the condition of the heart and lungs, particularly focusing on the extent of the cardiomegaly and pleural effusions.",
+      "predicted_positive": null,
+      "status": 200,
+      "correct": false
+    },
+    {
+      "id": "0045",
+      "label": "cardiomegaly",
+      "reference_positive": true,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": false
+    },
+    {
+      "id": "0045",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0046",
+      "label": "cardiomegaly",
+      "reference_positive": true,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": false
+    },
+    {
+      "id": "0046",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0047",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0047",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No additional radiologic study is needed at this time.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0048",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0048",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No, there is no pleural effusion.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0049",
+      "label": "cardiomegaly",
+      "reference_positive": false,
+      "answer": "No, there is no cardiomegaly.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    },
+    {
+      "id": "0049",
+      "label": "effusion",
+      "reference_positive": false,
+      "answer": "No additional radiologic study is needed at this time.",
+      "predicted_positive": false,
+      "status": 200,
+      "correct": true
+    }
+  ]
+}

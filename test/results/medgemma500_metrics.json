@@ -1,0 +1,152 @@
+{
+  "results": "test\\results\\medgemma500_t0\\results.jsonl",
+  "n": 500,
+  "bleu4": 4.49,
+  "rougeL": 0.2158,
+  "chexbert": {
+    "micro_f1": 0.2506,
+    "macro_f1": 0.1608,
+    "omission_rate": 0.685,
+    "hallucination_rate": 0.0938,
+    "labels": {
+      "Enlarged Cardiomediastinum": {
+        "reference_positive": 45,
+        "predicted_positive": 0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 45,
+        "tn": 455,
+        "f1": 0.0
+      },
+      "Cardiomegaly": {
+        "reference_positive": 85,
+        "predicted_positive": 23,
+        "tp": 14,
+        "fp": 9,
+        "fn": 71,
+        "tn": 406,
+        "f1": 0.259
+      },
+      "Lung Opacity": {
+        "reference_positive": 87,
+        "predicted_positive": 48,
+        "tp": 18,
+        "fp": 30,
+        "fn": 69,
+        "tn": 383,
+        "f1": 0.267
+      },
+      "Lung Lesion": {
+        "reference_positive": 25,
+        "predicted_positive": 16,
+        "tp": 4,
+        "fp": 12,
+        "fn": 21,
+        "tn": 463,
+        "f1": 0.195
+      },
+      "Edema": {
+        "reference_positive": 7,
+        "predicted_positive": 1,
+        "tp": 1,
+        "fp": 0,
+        "fn": 6,
+        "tn": 493,
+        "f1": 0.25
+      },
+      "Consolidation": {
+        "reference_positive": 12,
+        "predicted_positive": 1,
+        "tp": 0,
+        "fp": 1,
+        "fn": 12,
+        "tn": 487,
+        "f1": 0.0
+      },
+      "Pneumonia": {
+        "reference_positive": 9,
+        "predicted_positive": 0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 9,
+        "tn": 491,
+        "f1": 0.0
+      },
+      "Atelectasis": {
+        "reference_positive": 44,
+        "predicted_positive": 355,
+        "tp": 31,
+        "fp": 324,
+        "fn": 13,
+        "tn": 132,
+        "f1": 0.155
+      },
+      "Pneumothorax": {
+        "reference_positive": 5,
+        "predicted_positive": 1,
+        "tp": 0,
+        "fp": 1,
+        "fn": 5,
+        "tn": 494,
+        "f1": 0.0
+      },
+      "Pleural Effusion": {
+        "reference_positive": 22,
+        "predicted_positive": 25,
+        "tp": 9,
+        "fp": 16,
+        "fn": 13,
+        "tn": 462,
+        "f1": 0.383
+      },
+      "Pleural Other": {
+        "reference_positive": 9,
+        "predicted_positive": 1,
+        "tp": 1,
+        "fp": 0,
+        "fn": 8,
+        "tn": 491,
+        "f1": 0.2
+      },
+      "Fracture": {
+        "reference_positive": 10,
+        "predicted_positive": 0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 10,
+        "tn": 490,
+        "f1": 0.0
+      },
+      "Support Devices": {
+        "reference_positive": 33,
+        "predicted_positive": 6,
+        "tp": 3,
+        "fp": 3,
+        "fn": 30,
+        "tn": 464,
+        "f1": 0.154
+      },
+      "No Finding": {
+        "reference_positive": 115,
+        "predicted_positive": 292,
+        "tp": 79,
+        "fp": 213,
+        "fn": 36,
+        "tn": 172,
+        "f1": 0.388
+      }
+    }
+  },
+  "radgraph": {
+    "RG_E": 0.3483,
+    "RG_ER": 0.2933,
+    "RG_Complete": 0.2203,
+    "model_type": "radgraph"
+  },
+  "bertscore": {
+    "precision": 0.8006,
+    "recall": 0.8414,
+    "f1": 0.8202,
+    "model": "distilbert-base-uncased"
+  }
+}
